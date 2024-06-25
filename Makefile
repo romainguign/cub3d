@@ -6,7 +6,7 @@
 #    By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/20 15:03:42 by roguigna          #+#    #+#              #
-#    Updated: 2024/06/20 16:26:35 by roguigna         ###   ########.fr        #
+#    Updated: 2024/06/25 17:31:38 by roguigna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,10 @@ WHITE = \033[0;97m
 OBJ_DIR			= object
 
 SRC_FILES		= cub3d.c \
+				  utils/utils.c \
+				  utils/free_all.c \
 				  parsing/parse_map.c \
+				  parsing/fill_texture.c
 
 OBJ             = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 

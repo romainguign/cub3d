@@ -6,17 +6,26 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:40:35 by roguigna          #+#    #+#             */
-/*   Updated: 2024/06/20 16:47:07 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/06/25 17:33:54 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	fill_map(int fd, char *filename)
+static t_map	*fill_map(int fd, char *filename)
 {
 	t_map	*map;
 	
-	
+	map	= ft_calloc(1, sizeof(t_map));
+	if (!map)
+	{
+		ft_putstr_fd(MALLOC_ERROR, 2);
+		return (0);
+	}
+	if (!fill_textures(fd, map))
+		return (0);
+	// if (!copy_map)
+	// 	return (0);
 	return (map);
 }
 

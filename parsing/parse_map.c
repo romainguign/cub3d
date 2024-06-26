@@ -6,13 +6,13 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:40:35 by roguigna          #+#    #+#             */
-/*   Updated: 2024/06/25 17:33:54 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:12:35 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static t_map	*fill_map(int fd, char *filename)
+static t_map	*fill_map(int fd)
 {
 	t_map	*map;
 	
@@ -20,12 +20,15 @@ static t_map	*fill_map(int fd, char *filename)
 	if (!map)
 	{
 		ft_putstr_fd(MALLOC_ERROR, 2);
+		close (fd);
 		return (0);
 	}
-	if (!fill_textures(fd, map))
+	if (!check_map_file(fd, map))
 		return (0);
-	// if (!copy_map)
-	// 	return (0);
+	if (!fill_textures(map))
+		return (0);
+	if (!copy_map(map))
+		return (0);
 	return (map);
 }
 
@@ -35,7 +38,8 @@ static int	check_file(char	*filename)
 	int		fd;
 	
 	tmp = filename;
-	while (*(++tmp));
+	while (*tmp)
+		tmp++;
 	if (*(tmp - 1) != 'b' || *(tmp - 2) != 'u' || *(tmp - 3) != 'c'
 		|| *(tmp - 4) != '.')
 	{
@@ -59,10 +63,9 @@ t_map	*parse_map(char	*filename)
 	fd = check_file(filename);
 	if (fd == -1)
 		return (0);
-	map = fill_map(fd, filename);
+	map = fill_map(fd);
 	if (!map)
 		return (0);
-	close (fd);
-	return (NULL);
 	return (map);
+	return (NULL);
 }

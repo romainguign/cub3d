@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 13:35:22 by roguigna          #+#    #+#             */
-/*   Updated: 2023/11/30 15:15:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:50:55 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst || !del)
 		return ;
-	del(lst->content);
+	if (lst->content)
+		del(lst->content);
 	free (lst);
 }

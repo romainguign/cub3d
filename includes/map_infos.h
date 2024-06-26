@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:37:09 by roguigna          #+#    #+#             */
-/*   Updated: 2024/06/25 17:10:32 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/06/26 16:56:17 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,41 @@ typedef enum e_block
 	FLOOR,
 	WALL,
 	SPAWN
-}	t_block;
+}	t_block ;
 
 typedef struct s_textures
 {
-	char			facing_direction;
 	char			*NO_texture;
 	char			*SO_texture;
 	char			*WE_texture;
 	char			*EA_texture;
 	long long int	F;
 	long long int	C;
-}	t_textures;
+}	t_textures ;
+
+typedef struct s_file
+{
+	char 			*line;
+	struct s_file	*next;
+}	t_file;
 
 typedef struct s_map
 {
+	t_file		*map_file;
 	t_block		**block;
 	t_textures	*textures;
-	int			width;
+	char		spawn_direction;
 	int			height;
+	int			width;
 }	t_map;
 
 /*----------------------------- Parsing functions -----------------------------*/
 t_map	*parse_map(char	*filename);
-int		fill_textures(int fd, t_map *map);
+int		fill_textures(t_map *map);
+int		copy_map(t_map *map);
+int		check_map_file (int fd, t_map *map);
+t_file	*skip_textures(t_file *file);
+void	file_to_char(int fd, t_map *map);
+void	ft_fileclear(t_file **lst, void (*del)(void*));
 
 #endif

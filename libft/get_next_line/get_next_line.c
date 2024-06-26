@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 12:02:53 by roguigna          #+#    #+#             */
-/*   Updated: 2023/11/30 18:23:32 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/06/26 10:24:11 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,11 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	line = 0;
+	if (fd == -1 && save)
+	{
+		free(save);
+		return (0);
+	}
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (0);
 	if (!save)

@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 15:25:10 by roguigna          #+#    #+#             */
-/*   Updated: 2023/11/30 14:28:34 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/06/26 14:22:34 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 size_t	ft_strlen(const char *s)
 {
-	int	i;
+	char	*tmp;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	if (!s)
+		return (0);
+	tmp = (char *)s;
+	while (*tmp)
+		tmp++;
+	return (tmp - s);
 }

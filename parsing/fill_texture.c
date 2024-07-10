@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 09:50:51 by roguigna          #+#    #+#             */
-/*   Updated: 2024/06/26 15:55:25 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/02 19:20:38 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static int	texture_loop(t_map *map)
 		result = copy_texture(tmp->line, map->textures);
 		if (!result)
 		{
-			free_all(map);
+			free_map(map);
 			return (0);
 		}
 		if (result == -1)
@@ -115,7 +115,7 @@ int	fill_textures(t_map *map)
 	if (!map->textures)
 	{
 		ft_putstr_fd(MALLOC_ERROR, 2);
-		free_all(map);
+		free_map(map);
 		return (0);
 	}
 	map->textures->C = -1;

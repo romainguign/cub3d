@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:37:09 by roguigna          #+#    #+#             */
-/*   Updated: 2024/06/26 16:56:17 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/05 14:02:27 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_map
 	char		spawn_direction;
 	int			height;
 	int			width;
+	int			spawn_x;
+	int			spawn_y;
 }	t_map;
 
 /*----------------------------- Parsing functions -----------------------------*/

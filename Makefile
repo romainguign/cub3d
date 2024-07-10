@@ -6,7 +6,7 @@
 #    By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/20 15:03:42 by roguigna          #+#    #+#              #
-#    Updated: 2024/06/26 14:45:14 by roguigna         ###   ########.fr        #
+#    Updated: 2024/07/05 17:08:11 by roguigna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ INCLUDE			= -I includes -I libft/includes
 
 LIB				= -L libft -lft		
 
+MLX_FLAGS		= -Lmlx_linux -lmlx_Linux -Imlx_linux -lXext -lX11 -lm -lz
 
 ##############################  COLORS  ###################################
 
@@ -47,7 +48,13 @@ SRC_FILES		= cub3d.c \
 				  parsing/fill_texture.c \
 				  parsing/check_map_file.c \
 				  parsing/file_to_char.c \
-				  parsing/copy_map.c
+				  parsing/copy_map.c \
+				  game/initialize_window.c \
+				  game/draw.c \
+				  game/moves.c \
+				  game/raycaster.c \
+				  game/minimap_mask.c \
+				  game/draw_minimap.c \
 
 OBJ             = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
@@ -56,11 +63,11 @@ OBJ             = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT)
-	@$(CC) $(OBJ) $(LIBFT) $(CFLAGS) $(INCLUDE) -o $(NAME) 
+	@$(CC) $(OBJ) $(LIBFT) $(CFLAGS) $(MLX_FLAGS) $(INCLUDE) -o $(NAME) 
 	@echo "${GREEN}Cub3d executable file is ready! ${DEF_COLOR}"
 	
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -Imlx_linux -c $< -o $@
 
 $(OBJ_DIR):
 	@mkdir -p $(dir $(OBJ))

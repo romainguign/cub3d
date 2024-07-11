@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:28:19 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/05 15:23:29 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/11 19:41:15 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	img_pix_put(t_image *img, int x, int y, int color)
 	*(int *)pixel = color;
 }
 
-void	draw_column(t_map *map, t_image *img, int len_line[2], int x)
+void	draw_column(t_map *map, t_image *img,t_ray *ray, int x)
 {
 	int		y;
 
@@ -28,15 +28,15 @@ void	draw_column(t_map *map, t_image *img, int len_line[2], int x)
 	// printf("%d -> %d\n", len_line[0], len_line[1]);
 	while (y < WIN_HEIGHT)
 	{
-		if (y >= len_line[0] && y <= len_line[1])
+		if (y >= ray->draw_start && y <= ray->draw_end)
 		{
 			// printf("1\n");
-			if (y == len_line[0] || y == len_line[1])
+			if (y == ray->draw_start || y == ray->draw_end)
 				img_pix_put(img, x, y, 00000000);
 			else
 				img_pix_put(img, x, y, 11112657);
 		}
-		else if (y < len_line[0])
+		else if (y < ray->draw_start)
 		{
 			// printf("2\n");
 			img_pix_put(img, x, y, map->textures->C);	

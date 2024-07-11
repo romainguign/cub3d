@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:56:18 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/09 13:29:39 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/11 19:58:17 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_block	block_type(char c, t_map *map, int x, int y)
 {
-	if (c == ' ' || c == '\0')
+	if (c == ' ' || c == '\0' || c == '\n')
 		return (EMPTY);
 	if (c == '0')
 		return (FLOOR);
@@ -97,5 +97,6 @@ int	copy_map(t_map *map)
 	}
 	if (!fill_map(map, start_map))
 		return (0);
+	printf ("spawX : %d, spawnY : %d\n", map->spawn_x, map->spawn_y);
 	return (1);
 }

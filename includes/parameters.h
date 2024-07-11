@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 10:04:43 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/09 14:36:23 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/11 20:06:33 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define WIN_HEIGHT 720
 
 //PLAYER 
-# define SPEED 0.5
-# define SENSIBILITY 0.2
+# define SPEED  0.1
+# define SENSIBILITY 0.1
 # define CUBE_SIZE 1
 
 //MINIMAP

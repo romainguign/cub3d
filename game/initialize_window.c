@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:41:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/09 14:35:10 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/11 19:28:27 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,10 @@ static int	init_game(t_cube *cube)
 		return (0);
 	cube->game->pos_x = cube->map->spawn_x;
 	cube->game->pos_y = cube->map->spawn_y;
-	cube->game->dir_x = -1;
-	cube->game->dir_y = 0;
+	cube->game->dir_x = 0;
+	cube->game->dir_y = 1;
 	cube->game->time = 0;
+	cube->game->plane_x = -0.66;
 	cube->game->old_time = 0;
 	cube->game->mask = ft_calloc(1, sizeof(t_mask));
 	if (!cube->game->mask)
@@ -108,7 +109,6 @@ void	game_loop(t_map *map, t_mlx *mlx, t_game *game, t_cube *cube)
 	if (!mlx->img->img)
 		return ;
 	mlx->img->pixels = mlx_get_data_addr(mlx->img->img, &mlx->img->bpp, &mlx->img->size_line, &mlx->img->endian);
-	draw_ceiling_floor(map, mlx->img);
 	raycaster(game, map, mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 	mlx_key_hook(mlx->win, key_hook, cube);

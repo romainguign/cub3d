@@ -6,7 +6,7 @@
 #    By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 18:13:11 by roguigna          #+#    #+#              #
-#    Updated: 2024/06/20 15:34:43 by roguigna         ###   ########.fr        #
+#    Updated: 2024/07/11 17:57:34 by roguigna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ GNL				= get_next_line
 
 OBJ 			= ${SRCDIRSRC:.c=.o}
 
-CC 				= clang
+CC 				= cc
 
 CFLAGS 			= -Wall -Wextra -Werror
 

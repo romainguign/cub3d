@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:03:38 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/09 13:11:08 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/11 18:41:59 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 # define PI 3.1415926535
 
-typedef struct	image
+typedef struct	s_image
 {
 	void	*img;
 	char	*pixels;
@@ -35,7 +35,7 @@ typedef struct	image
 }	t_image ;
 
 
-typedef struct	mlx
+typedef struct	s_mlx
 {
 	void	*mlx;
 	void	*win;
@@ -47,6 +47,28 @@ typedef struct	mask
 	char	**minimap;
 }	t_mask ;
 
+typedef struct s_ray
+{
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
+	double	sidedist_x;
+	double	sidedist_y;
+	double	deltadist_x;
+	double	deltadist_y;
+	double	raywall_dist;
+	double	wall_x;
+}	t_ray ;
+
+
 typedef struct game
 {
 	double	pos_x;
@@ -57,10 +79,11 @@ typedef struct game
 	double	plane_y;
 	double	time;
 	double	old_time;
+	t_ray	ray;
 	t_mask	*mask;
 }	t_game ;
 
-typedef struct t_cube
+typedef struct s_cube
 {
 	t_map	*map;
 	t_game	*game;
@@ -82,8 +105,8 @@ int		start_game(t_cube *cube);
 void	img_pix_put(t_image *img, int x, int y, int color);
 void	camera_moves(t_game *game, int key_code);
 void	player_moves(t_game *game, t_map *map, int key_code);
-void	draw_column(t_map *map, t_image *img, int draw_len[2], int x);
-void	raycaster(t_game *game, t_map *map, t_mlx *mlx);
+void	draw_column(t_map *map, t_image *img,t_ray *ray, int x);
+int		raycaster(t_game *game, t_map *map, t_mlx *mlx);
 
 //minimap
 int		minimap_mask(t_mask *mask);

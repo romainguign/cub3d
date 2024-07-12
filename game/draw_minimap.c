@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 16:50:17 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/11 19:50:34 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/12 11:04:37 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ static void	draw_walls(t_map *map, t_mlx *mlx, t_game *game, int pos[2])
 	double	mapX;
 	double	mapY;
 
-	mapX = fabs(game->pos_x - pos[1]) / MINIMAP_ZOOM;
-	mapY = fabs(game->pos_y - pos[0]) / MINIMAP_ZOOM;
+	mapX = game->pos_x + (pos[1] - MINIMAP_RADIUS) / MINIMAP_ZOOM;
+	mapY = game->pos_y + (pos[0] - MINIMAP_RADIUS) / MINIMAP_ZOOM;
+	if (pos[0] == MINIMAP_RADIUS && pos[1] == MINIMAP_RADIUS)
+		printf("center x : %f, center y : %f\n", mapX, mapY);
 	if ((int)mapX >= map->width|| (int)mapY >= map->height - 1)
-	{
+	{	
 		img_pix_put(mlx->img , pos[1] + MINIMAP_POSX, pos[0] + MINIMAP_POSY, MINIMAP_F_COLOR);
 		return ;
 	}

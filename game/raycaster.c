@@ -6,32 +6,11 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:01:53 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/11 20:03:49 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/12 11:22:02 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static void	init_ray(t_ray *ray)
-{
-	ray->map_x = 0;
-	ray->map_y = 0;
-	ray->step_x = 0;
-	ray->step_y = 0;
-	ray->side = 0;
-	ray->line_height = 0;
-	ray->draw_start = 0;
-	ray->draw_end = 0;
-	ray->camera_x = 0;
-	ray->dir_x = 0;
-	ray->dir_y = 0;
-	ray->sidedist_x = 0;
-	ray->sidedist_y = 0;
-	ray->deltadist_x = 0;
-	ray->deltadist_y = 0;
-	ray->raywall_dist = 0;
-	ray->wall_x = 0;
-}
 
 static void	init_raycasting(int x, t_ray *ray, t_game *game)
 {

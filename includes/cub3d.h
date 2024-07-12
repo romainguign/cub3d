@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:03:38 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/11 18:41:59 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:09:28 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ typedef struct s_ray
 	double	wall_x;
 }	t_ray ;
 
-
 typedef struct game
 {
 	double	pos_x;
@@ -79,6 +78,7 @@ typedef struct game
 	double	plane_y;
 	double	time;
 	double	old_time;
+	char	input[6];
 	t_ray	ray;
 	t_mask	*mask;
 }	t_game ;
@@ -103,13 +103,19 @@ long long int	ft_atoll(const char *str);
 /*---------------------------------- Game -----------------------------------*/
 int		start_game(t_cube *cube);
 void	img_pix_put(t_image *img, int x, int y, int color);
-void	camera_moves(t_game *game, int key_code);
-void	player_moves(t_game *game, t_map *map, int key_code);
+void	camera_moves(t_game *game, char *input);
+void	player_moves(t_game *game, t_map *map, char *input);
 void	draw_column(t_map *map, t_image *img,t_ray *ray, int x);
 int		raycaster(t_game *game, t_map *map, t_mlx *mlx);
+void	keydown(int	keycode, char *input);
+void	keyup(int keycode, char *input);
 
 //minimap
 int		minimap_mask(t_mask *mask);
 void    minimap(t_map *map, t_game *game, t_mlx *mlx);
+
+//init_functions
+int		init_game(t_cube *cube);
+void	init_ray(t_ray *ray);
 
 #endif

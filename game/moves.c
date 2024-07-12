@@ -6,17 +6,17 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:16:38 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/11 20:06:52 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:08:41 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	camera_moves(t_game *game, int key_code)
+void	camera_moves(t_game *game, char *input)
 {
 	// if (key_code == XK_Up)
 	// 	game->dir_y += SENSIBILITY;
-	if (key_code == XK_Left)
+	if (input[2] == 1)
 	{
 		double oldDirX;
 		oldDirX = game->dir_x;
@@ -28,7 +28,7 @@ void	camera_moves(t_game *game, int key_code)
 	}
 		// if (key_code == XK_Down)
 		// 	game->dir_y -= SENSIBILITY;
-	if (key_code == XK_Right)
+	if (input[3] == 1)
 	{
 		double oldDirX = game->dir_x;
 		game->dir_x = game->dir_x * cos(SENSIBILITY) - game->dir_y * sin(SENSIBILITY);
@@ -41,42 +41,24 @@ void	camera_moves(t_game *game, int key_code)
 	// 	game
 }
 
-void	player_moves(t_game *game, t_map *map, int key_code)
+void	player_moves(t_game *game, t_map *map, char *input)
 {
 	double	new_x;
 	double	new_y;
 	
 	new_x = game->pos_x;
 	new_y = game->pos_y;
-	if (key_code == XK_w)
+	if (input[0] == 1)
 	{
 		new_x += game->dir_x * SPEED;
 		new_y += game->dir_y * SPEED;
 	}
-	if (key_code == XK_s)
+	if (input[1] == 1)
 	{
 		new_x -= game->dir_x * SPEED;
 		new_y -= game->dir_y * SPEED;
 	}
-
-	//temp
-	// if (key_code == XK_w)
-	// 	game->pos_y += SPEED;
-	// if (key_code == XK_s)
-	// 	game->pos_y -= SPEED;
-	// if (key_code == XK_s)
-	// {
-	// 	new_x -= game->dir_x * SPEED;
-	// 	new_y -= game->dir_y * SPEED;
-	// }
-	
-	// // if ((int)new_x > 0 && (int)new_x < map->width && map->block[(int)game->pos_y][(int)new_x] != WALL)
-		game->pos_x = new_x;
-	// // if ((int)new_y > 0 && (int)new_y < map->height && map->block[(int)new_y][(int)game->pos_x] != WALL)
-		game->pos_y = new_y;
-	// if (key_code == XK_a)
-	// 	game->pos_x -= SPEED;
-	// if (key_code == XK_d)
-	// 	game->pos_x += SPEED;
+	game->pos_x = new_x;
+	game->pos_y = new_y;
 }
 	

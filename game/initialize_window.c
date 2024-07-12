@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:41:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/11 19:28:27 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/07/12 12:50:29 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,20 @@ int	key_hook(int kcode, t_cube *cube)
 
 int	key_loop(int kcode, t_cube *cube)
 {
-	int	modifyed;
+	int		modifyed;
+	char	*input;
 
 	modifyed = 0;
-	if (kcode == XK_w || kcode == XK_s)
+	input = cube->game->input;
+	keydown(kcode, input);
+	if (input[0] || input[1])
 	{
-		player_moves(cube->game, cube->map, kcode);
+		player_moves(cube->game, cube->map, input);
 		modifyed++;
 	}
-	if (kcode == XK_Left  || kcode == XK_Right)
+	if (input[2] || input[3])
 	{
-		camera_moves(cube->game, kcode);
+		camera_moves(cube->game, input);
 		modifyed++;
 	}
 	if (modifyed > 0)
@@ -74,29 +77,6 @@ void	draw_ceiling_floor(t_map *map, t_image *img)
 	}
 }
 
-static int	init_game(t_cube *cube)
-{
-	cube->mlx->img = ft_calloc(1, sizeof(t_image));
-	if (!cube->mlx->img)
-		return (0);
-	cube->game = ft_calloc(1, sizeof(t_game));
-	if (!cube->game)
-		return (0);
-	cube->game->pos_x = cube->map->spawn_x;
-	cube->game->pos_y = cube->map->spawn_y;
-	cube->game->dir_x = 0;
-	cube->game->dir_y = 1;
-	cube->game->time = 0;
-	cube->game->plane_x = -0.66;
-	cube->game->old_time = 0;
-	cube->game->mask = ft_calloc(1, sizeof(t_mask));
-	if (!cube->game->mask)
-		return (0);
-	if (!minimap_mask(cube->game->mask))
-		return (0);
-	return (1);
-}
-
 void	game_loop(t_map *map, t_mlx *mlx, t_game *game, t_cube *cube)
 {
 	mlx->mlx = mlx_init();
@@ -113,6 +93,7 @@ void	game_loop(t_map *map, t_mlx *mlx, t_game *game, t_cube *cube)
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 	mlx_key_hook(mlx->win, key_hook, cube);
 	mlx_hook(mlx->win, 2, 1L<<0, key_loop, cube);
+	mlx_hook(mlx->win, 3, 1L<<0, keyup, game->input);
 	mlx_hook(mlx->win, 17, 0L, &destroy, cube);
 	mlx_loop(mlx->mlx);
 }

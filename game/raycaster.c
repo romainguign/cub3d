@@ -6,11 +6,11 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:01:53 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/12 11:22:02 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cube.h"
 
 static void	init_raycasting(int x, t_ray *ray, t_game *game)
 {

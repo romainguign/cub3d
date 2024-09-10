@@ -6,11 +6,11 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 16:50:17 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/12 11:04:37 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cube.h"
 
 static void	draw_player(int	x, int y, t_image *img)
 {

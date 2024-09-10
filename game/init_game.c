@@ -6,11 +6,11 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:21:43 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/12 12:30:04 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cube.h"
 
 void	init_ray(t_ray *ray)
 {

@@ -6,11 +6,11 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 09:50:51 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/02 19:20:38 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cube.h"
 
 static int	convert_color(char *line, long long int *color)
 {

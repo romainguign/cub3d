@@ -6,11 +6,11 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:41:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/12 12:50:29 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cube.h"
 
 int	destroy(t_cube *cube)
 {

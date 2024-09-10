@@ -6,11 +6,11 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:56:18 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/11 19:58:17 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/10 10:45:36 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cube.h"
 
 static t_block	block_type(char c, t_map *map, int x, int y)
 {
@@ -34,7 +34,7 @@ static int	fill_map(t_map *map, t_file *start_map)
 	
 	y = 0;
 	tmp = start_map;
-	while (y < map->height - 1)
+	while (y < map->height)
 	{
 		x = 0;
 		map->block[y] = ft_calloc(map->width + 1, sizeof(t_block));
@@ -97,6 +97,14 @@ int	copy_map(t_map *map)
 	}
 	if (!fill_map(map, start_map))
 		return (0);
+
+	printf("JE PRINT LA \n");
+	for(int y = 0; y < map->height; y++)
+	{
+		for(int x = 0; x < map->width - 1; x++)
+			printf("%d", map->block[y][x]);
+		printf("\n");
+	}
 	printf ("spawX : %d, spawnY : %d\n", map->spawn_x, map->spawn_y);
 	return (1);
 }

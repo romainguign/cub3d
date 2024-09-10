@@ -6,11 +6,11 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:03:45 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/09 12:54:41 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:42:20 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cube.h"
 
 int	main(int argc, char **argv)
 {
@@ -30,13 +30,13 @@ int	main(int argc, char **argv)
 		free(cube);
 		return (1);
 	}
-	for(int x = 0; x < cube->map->width; x++)
-	{
-		for(int y = 0; y < cube->map->height - 1; y++)
-			printf("%d", cube->map->block[y][x]);
-		printf("\n");
-	}
-	start_game(cube);
+	// for(int x = 0; x < cube->map->width; x++)
+	// {
+	// 	for(int y = 0; y < cube->map->height - 1; y++)
+	// 		printf("%d", cube->map->block[y][x]);
+	// 	printf("\n");
+	// }
+	// start_game(cube);
 	free_all(cube);
 	return (0);
 }

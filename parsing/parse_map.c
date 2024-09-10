@@ -6,11 +6,11 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:40:35 by roguigna          #+#    #+#             */
-/*   Updated: 2024/06/26 15:12:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/09 16:09:11 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cube.h"
 
 static t_map	*fill_map(int fd)
 {
@@ -66,6 +66,10 @@ t_map	*parse_map(char	*filename)
 	map = fill_map(fd);
 	if (!map)
 		return (0);
+	if (!is_valid_map(map))
+	{
+		free_map(map);
+		return (0);
+	}
 	return (map);
-	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:41:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:21:50 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,10 @@ void	game_loop(t_map *map, t_mlx *mlx, t_game *game, t_cube *cube)
 	raycaster(game, map, mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 	mlx_key_hook(mlx->win, key_hook, cube);
+	// mlx_hook(g.win.ref, ON_DESTROY, 0L, , );
+	// mlx_hook(g.win.ref, ON_KEYDOWN, 0L, , );
+	// mlx_hook(g.win.ref, ON_KEYUP, 0L, , );
+	// mlx_loop_hook(g.mlx, cub_render, &g);
 	mlx_hook(mlx->win, 2, 1L<<0, key_loop, cube);
 	mlx_hook(mlx->win, 3, 1L<<0, keyup, game->input);
 	mlx_hook(mlx->win, 17, 0L, &destroy, cube);

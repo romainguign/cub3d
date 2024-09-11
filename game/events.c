@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:30:40 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:22:04 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	keyup(int	keycode, char *input)
 {
+	printf("ayyaaaaaa\n");
 	if (keycode == XK_w)
 		input[0] = 0;
 	if (keycode == XK_s)

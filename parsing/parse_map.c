@@ -6,11 +6,25 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:40:35 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/09 16:09:11 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:10:08 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+static int		missing_data(t_map *map)
+{
+	t_textures *tmp;
+
+	tmp = map->textures;
+	if (!tmp->NO_texture || !tmp->SO_texture || !tmp->WE_texture || !tmp->EA_texture || !tmp->C || !tmp->F
+		|| !tmp->C || !map->block)
+	{
+		ft_putstr_fd("cub3d: missing data in map file\n", 2);
+		return (0);
+	}
+	return (1);
+}
 
 static t_map	*fill_map(int fd)
 {
@@ -28,6 +42,8 @@ static t_map	*fill_map(int fd)
 	if (!fill_textures(map))
 		return (0);
 	if (!copy_map(map))
+		return (0);
+	if (!missing_data(map))
 		return (0);
 	return (map);
 }

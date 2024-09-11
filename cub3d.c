@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:03:45 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/09 16:42:20 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/11 11:06:44 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 	// 		printf("%d", cube->map->block[y][x]);
 	// 	printf("\n");
 	// }
-	// start_game(cube);
+	start_game(cube);
 	free_all(cube);
 	return (0);
 }

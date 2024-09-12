@@ -16,8 +16,5 @@
 
 int	main(void)
 {
-	double nbr = 4.9;
-	int	intnbr = (int) nbr;
-
-	printf ("arrondi : %d\n", intnbr);
+	
 }

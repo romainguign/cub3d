@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:41:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/11 14:21:50 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/12 12:57:18 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,15 @@ int	destroy(t_cube *cube)
 	return (1);
 }
 
-int	key_hook(int kcode, t_cube *cube)
-{
-	if (kcode == XK_Escape)
-		destroy(cube);
-	
-	return (0);
-}
 
-int	key_loop(int kcode, t_cube *cube)
+int	update_window(t_cube *cube)
 {
 	int		modifyed;
 	char	*input;
 
 	modifyed = 0;
 	input = cube->game->input;
-	keydown(kcode, input);
+	printf("OUI ENFIN x : %f y : %f\n", cube->game->pos_x, cube->game->pos_y);
 	if (input[0] || input[1])
 	{
 		player_moves(cube->game, cube->map, input);
@@ -52,8 +45,16 @@ int	key_loop(int kcode, t_cube *cube)
 	}
 	if (modifyed > 0)
 		raycaster(cube->game, cube->map, cube->mlx);
-	printf("x : %f y : %f\n", cube->game->pos_x, cube->game->pos_y);
 	return (1);
+}
+
+int	key_hook(int kcode, t_cube *cube)
+{
+	update_window(cube);
+	if (kcode == XK_Escape)
+		destroy(cube);
+	
+	return (0);
 }
 
 void	draw_ceiling_floor(t_map *map, t_image *img)
@@ -91,14 +92,11 @@ void	game_loop(t_map *map, t_mlx *mlx, t_game *game, t_cube *cube)
 	mlx->img->pixels = mlx_get_data_addr(mlx->img->img, &mlx->img->bpp, &mlx->img->size_line, &mlx->img->endian);
 	raycaster(game, map, mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
-	mlx_key_hook(mlx->win, key_hook, cube);
-	// mlx_hook(g.win.ref, ON_DESTROY, 0L, , );
-	// mlx_hook(g.win.ref, ON_KEYDOWN, 0L, , );
-	// mlx_hook(g.win.ref, ON_KEYUP, 0L, , );
-	// mlx_loop_hook(g.mlx, cub_render, &g);
-	mlx_hook(mlx->win, 2, 1L<<0, key_loop, cube);
-	mlx_hook(mlx->win, 3, 1L<<0, keyup, game->input);
-	mlx_hook(mlx->win, 17, 0L, &destroy, cube);
+	// mlx_key_hook(mlx->win, key_hook, cube);
+	mlx_hook(mlx->win, KeyPress, KeyPressMask, key_press, cube);
+	mlx_hook(mlx->win, KeyRelease, KeyReleaseMask, key_realease, game->input);
+	// mlx_hook(mlx->win, 17, 0L, &destroy, cube);
+	mlx_loop_hook(mlx->mlx, &update_window, cube);
 	mlx_loop(mlx->mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 16:50:17 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:04:08 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,8 @@ static void	draw_walls(t_map *map, t_mlx *mlx, t_game *game, int pos[2])
 	double	mapY;
 
 	mapX = game->pos_x + (pos[1] - MINIMAP_RADIUS) / MINIMAP_ZOOM;
-	mapY = game->pos_y + (pos[0] - MINIMAP_RADIUS) / MINIMAP_ZOOM;
-	if (pos[0] == MINIMAP_RADIUS && pos[1] == MINIMAP_RADIUS)
-		printf("center x : %f, center y : %f\n", mapX, mapY);
+	mapY = game->pos_y + (pos[0] - MINIMAP_RADIUS) / MINIMAP_ZOOM - 2;
+	// printf("Y CRASH : %d\n", (int)mapY);
 	if ((int)mapX >= map->width|| (int)mapY >= map->height - 1)
 	{	
 		img_pix_put(mlx->img , pos[1] + MINIMAP_POSX, pos[0] + MINIMAP_POSY, MINIMAP_F_COLOR);
@@ -68,23 +67,3 @@ void	minimap(t_map *map, t_game *game, t_mlx *mlx)
 	}
 	draw_player(MINIMAP_RADIUS + MINIMAP_POSX, MINIMAP_RADIUS + MINIMAP_POSY, mlx->img);
 }
-// void	minimap(t_map *map, t_game *game, t_mlx *mlx)
-// {
-// 	int	x;
-// 	int y;
-	
-// 	y = 0;
-// 	while (y < MINIMAP_RADIUS * 2 + 2)
-// 	{
-// 		x = 0;
-// 		while (x < MINIMAP_RADIUS * 2)
-// 		{
-// 			if (game->mask->minimap[y][x] == 1)
-// 				img_pix_put(mlx->img , x + MINIMAP_POSX, y + MINIMAP_POSY, MINIMAP_F_COLOR);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	// draw_walls
-// 	draw_player(MINIMAP_RADIUS + MINIMAP_POSX, MINIMAP_RADIUS + MINIMAP_POSY, mlx->img);
-// }

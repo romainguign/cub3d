@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:40:35 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/11 15:10:08 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:01:00 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int		missing_data(t_map *map)
 
 	tmp = map->textures;
 	if (!tmp->NO_texture || !tmp->SO_texture || !tmp->WE_texture || !tmp->EA_texture || !tmp->C || !tmp->F
-		|| !tmp->C || !map->block)
+		|| !tmp->C || !map->block || !map->spawn_x)
 	{
 		ft_putstr_fd("cub3d: missing data in map file\n", 2);
 		return (0);

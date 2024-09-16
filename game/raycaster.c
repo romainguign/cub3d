@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:01:53 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 01:39:25 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,9 @@ static void	step_dda(t_ray *ray, t_game *game)
 	}
 }
 
-static void	perform_dda(t_map *map, t_ray *ray)
+static int	perform_dda(t_map *map, t_ray *ray)
 {
-	int	hit;
-
-	hit = 0;
-	while (hit == 0)
+	while (1)
 	{
 		if (ray->sidedist_x < ray->sidedist_y)
 		{
@@ -67,18 +64,25 @@ static void	perform_dda(t_map *map, t_ray *ray)
 			ray->map_y += ray->step_y;
 			ray->side = 1;
 		}
-		if (ray->map_y < 0.25
-			|| ray->map_x < 0.25
-			|| ray->map_y > map->height - 1.25
-			|| ray->map_x > map->width - 1.25)
-			break ;
+		if (ray->map_y < 0
+			|| ray->map_x < 0
+			|| ray->map_y > map->height - 1
+			|| ray->map_x > map->width - 1)
+			return (0);
 		else if (map->block[ray->map_y][ray->map_x] == WALL)
-			hit = 1;
+			return (1);
 	}
 }
 
 static void	calculate_line_height(t_ray *ray, t_game *game)
 {
+	if (ray->hit == 0)
+	{
+		ray->line_height = 0;
+		ray->draw_start = WIN_HEIGHT / 2;
+		ray->draw_end = WIN_HEIGHT / 2;
+		return ;
+	}
 	if (ray->side == 0)
 		ray->raywall_dist = (ray->sidedist_x - ray->deltadist_x);
 	else
@@ -108,7 +112,7 @@ int	raycaster(t_game *game, t_map *map, t_mlx *mlx)
 	{
 		init_raycasting(x, &ray, game);
 		step_dda(&ray, game);
-		perform_dda(map, &ray);
+		ray.hit = perform_dda(map, &ray);
 		calculate_line_height(&ray, game);
 		draw_column(map, mlx->img,&ray, x);
 		// if (x % 10 == 0)
@@ -118,7 +122,7 @@ int	raycaster(t_game *game, t_map *map, t_mlx *mlx)
 		// }
 		x++;
 	}
-	minimap(map, game, mlx);
+	// minimap(map, game, mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 	return (1);
 }

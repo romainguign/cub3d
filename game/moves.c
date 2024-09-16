@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:16:38 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/12 10:10:19 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 01:19:18 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,6 @@ void	player_moves(t_game *game, t_map *map, char *input)
 		game->pos_y = 0.5;
 	else if (game->pos_y < 0.5)
 		game->pos_y = map->height - 1.5;
+
+	printf ("x : %f, y : %f\n", game->pos_x, game->pos_y);
 }

@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:41:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/12 12:57:18 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:00:51 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	update_window(t_cube *cube)
 
 	modifyed = 0;
 	input = cube->game->input;
-	printf("OUI ENFIN x : %f y : %f\n", cube->game->pos_x, cube->game->pos_y);
 	if (input[0] || input[1])
 	{
 		player_moves(cube->game, cube->map, input);

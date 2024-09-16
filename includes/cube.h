@@ -57,6 +57,7 @@ typedef struct s_ray
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
+	int		hit;
 	double	camera_x;
 	double	dir_x;
 	double	dir_y;

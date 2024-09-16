@@ -16,14 +16,12 @@ int	key_realease(int keycode, char *input)
 {
 	if (keycode == XK_w)
 	{
-		printf("realse W\n");
 		input[0] = 0;
 	}
 	if (keycode == XK_s)
 		input[1] = 0;
 	if (keycode == XK_Left)
 	{
-		printf("realse left arrow\n");
 		input[2] = 0;
 	}
 	if (keycode == XK_Right)
@@ -41,10 +39,7 @@ int	key_press(int	keycode, t_cube *cube)
 
 	input = cube->game->input;
 	if (keycode == XK_w)
-	{
-		printf("w pressed\n");
 		input[0] = 1;
-	}
 	if (keycode == XK_s)
 		input[1] = 1;
 	if (keycode == XK_Left)

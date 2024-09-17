@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:56:18 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/12 10:04:42 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:14:11 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	fill_map(t_map *map, t_file *start_map)
 	return (1);
 }
 
-static void	get_size(t_map *map, t_file *start_map)
+static int	get_size(t_map *map, t_file *start_map)
 {
 	t_file	*tmp;
 	int		i;
@@ -70,9 +70,16 @@ static void	get_size(t_map *map, t_file *start_map)
 		while (tmp->line[i] && is_space(tmp->line[i]))
 			i++;
 		if (tmp->line[i] == '\0')
-			return ;
+			break ;
 		tmp = tmp->next;
 	}
+	while (tmp)
+	{
+		if (tmp->line[0] != '\n' || tmp->line[0] == '\0')
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }
 
 int	copy_map(t_map *map)
@@ -83,10 +90,15 @@ int	copy_map(t_map *map)
 	t_file	*tmp = start_map;
 	while (tmp)
 	{
-		printf("%s", tmp->line);
+		printf("map : %s", tmp->line);
 		tmp = tmp->next;
 	}
-	get_size(map, start_map);
+	if (!get_size(map, start_map))
+	{
+		ft_putstr_fd("cub3d: error: additionnal content after map\n", 2);
+		free_map(map);
+		return (0);
+	}
 	printf ("width : %d, height : %d\n", map->width, map->height);
 	map->block = ft_calloc(map->height + 1, sizeof(t_block *));
 	if (!map->block)

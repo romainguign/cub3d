@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:21:43 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 01:27:49 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:39:53 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,30 @@ void	init_ray(t_ray *ray)
 	ray->hit = 0;
 }
 
+static void init_dir(t_cube *cube)
+{
+	if (cube->map->spawn_direction == 'S')
+	{
+		cube->game->dir_y = 1;
+		cube->game->plane_x = -0.66;
+	}
+	else if (cube->map->spawn_direction == 'N')
+	{
+		cube->game->dir_y = -1;
+		cube->game->plane_x = 0.66;
+	}
+	else if (cube->map->spawn_direction == 'E')
+	{
+		cube->game->dir_x = 1;
+		cube->game->plane_y = 0.66;
+	}
+	else if (cube->map->spawn_direction == 'W')
+	{
+		cube->game->dir_x = -1;
+		cube->game->plane_y = -0.66;
+	}
+}
+
 int	init_game(t_cube *cube)
 {
 	int	i;
@@ -47,11 +71,7 @@ int	init_game(t_cube *cube)
 		return (0);
 	cube->game->pos_x = cube->map->spawn_x;
 	cube->game->pos_y = cube->map->spawn_y;
-	cube->game->dir_x = 0;
-	cube->game->dir_y = 1;
-	cube->game->time = 0;
-	cube->game->plane_x = -0.66;
-	cube->game->old_time = 0;
+	init_dir(cube);
 	cube->game->mask = ft_calloc(1, sizeof(t_mask));
 	if (!cube->game->mask)
 		return (0);

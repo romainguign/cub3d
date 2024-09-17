@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:03:45 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/11 11:06:44 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 14:13:38 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr_fd("Invalid number of arguments\n", 2);
+		ft_putstr_fd("cub3d: invalid number of arguments\n", 2);
 		return (1);
 	}
 	cube = ft_calloc(1, sizeof(t_cube));

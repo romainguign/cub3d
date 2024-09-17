@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 11:01:53 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 01:39:25 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:06:20 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,6 @@ int	raycaster(t_game *game, t_map *map, t_mlx *mlx)
 		ray.hit = perform_dda(map, &ray);
 		calculate_line_height(&ray, game);
 		draw_column(map, mlx->img,&ray, x);
-		// if (x % 10 == 0)
-		// {
-			
-		// 	printf ("x : %d, start %d, end : %d\n", x, ray.draw_start, ray.draw_end);
-		// }
 		x++;
 	}
 	// minimap(map, game, mlx);

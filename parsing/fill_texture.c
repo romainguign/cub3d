@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 09:50:51 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:48:44 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,30 @@
 
 static int	convert_color(char *line, long long int *color)
 {
-	long long int RGB[3];
-	char	**RGBascii;
-	int		i;
-	
+	long long int	rgb[3];
+	char			**rgb_ascii;
+	int				i;
+
 	if (*color != -1)
 	{
 		ft_putstr_fd("cub3d: double definition of the color\n", 2);
 		return (0);
 	}
-	i = 1;	
+	i = 1;
 	while (line[i] && is_space(line[i]))
 		i++;
-	RGBascii = ft_split(&line[i], ',');
-	if (!RGBascii)
+	rgb_ascii = ft_split(&line[i], ',');
+	if (!rgb_ascii)
 	{
-		free_tab((void**)RGBascii);
+		free_tab((void **)rgb_ascii);
 		ft_putstr_fd(MALLOC_ERROR, 2);
 		return (0);
 	}
-	RGB[0] = ft_atoll(RGBascii[0]);
-	RGB[1] = ft_atoll(RGBascii[1]);
-	RGB[2] = ft_atoll(RGBascii[2]);
-	free_tab((void**)RGBascii);
-	*color = (RGB[0] << 16) + (RGB[1] << 8) + RGB[2];
+	rgb[0] = ft_atoll(rgb_ascii[0]);
+	rgb[1] = ft_atoll(rgb_ascii[1]);
+	rgb[2] = ft_atoll(rgb_ascii[2]);
+	free_tab((void **)rgb_ascii);
+	*color = (rgb[0] << 16) + (rgb[1] << 8) + rgb[2];
 	return (1);
 }
 
@@ -68,7 +68,8 @@ static int	copy_texture(char *line, t_textures *texture)
 	int		result;
 
 	tmp = line;
-	while (is_space(*tmp) && *(++tmp));
+	while (is_space(*tmp) && *(++tmp))
+		;
 	if (*tmp == '\0')
 		return (1);
 	else if (!ft_strncmp("NO", tmp, 2))
@@ -92,7 +93,7 @@ static int	texture_loop(t_map *map)
 {
 	int		result;
 	t_file	*tmp;
-	
+
 	tmp = map->map_file;
 	while (tmp)
 	{

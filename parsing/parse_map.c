@@ -6,19 +6,20 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:40:35 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 14:57:25 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:34:04 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-static int		missing_data(t_map *map)
+static int	missing_data(t_map *map)
 {
-	t_textures *tmp;
+	t_textures	*tmp;
 
 	tmp = map->textures;
-	if (!tmp->NO_texture || !tmp->SO_texture || !tmp->WE_texture || !tmp->EA_texture
-		|| tmp->C == -1 || tmp->F == -1 || !map->block || !map->spawn_x)
+	if (!tmp->NO_texture || !tmp->SO_texture || !tmp->WE_texture
+		|| !tmp->EA_texture || tmp->C == -1 || tmp->F == -1
+		|| !map->block || !map->spawn_x)
 	{
 		free_map(map);
 		ft_putstr_fd("cub3d: missing data in map file\n", 2);
@@ -30,8 +31,8 @@ static int		missing_data(t_map *map)
 static t_map	*fill_map(int fd)
 {
 	t_map	*map;
-	
-	map	= ft_calloc(1, sizeof(t_map));
+
+	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 	{
 		ft_putstr_fd(MALLOC_ERROR, 2);
@@ -40,14 +41,6 @@ static t_map	*fill_map(int fd)
 	}
 	if (!check_map_file(fd, map))
 		return (0);
-
-	t_file *tmp = map->map_file;
-	while (tmp)
-	{
-		printf("caca : %s", tmp->line);
-		tmp = tmp->next;
-	}
-	printf ("\n");
 	if (!fill_textures(map))
 		return (0);
 	if (!copy_map(map))
@@ -61,7 +54,7 @@ static int	check_file(char	*filename)
 {
 	char	*tmp;
 	int		fd;
-	
+
 	tmp = filename;
 	while (*tmp)
 		tmp++;

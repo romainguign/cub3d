@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:21:43 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 15:39:53 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:01:02 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_ray(t_ray *ray)
 	ray->hit = 0;
 }
 
-static void init_dir(t_cube *cube)
+static void	init_dir(t_cube *cube)
 {
 	if (cube->map->spawn_direction == 'S')
 	{

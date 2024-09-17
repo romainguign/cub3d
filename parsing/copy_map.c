@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:56:18 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 14:14:11 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:36:48 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	fill_map(t_map *map, t_file *start_map)
 	int		y;
 	int		x;
 	t_file	*tmp;
-	
+
 	y = 0;
 	tmp = start_map;
 	while (y < map->height)
@@ -85,14 +85,8 @@ static int	get_size(t_map *map, t_file *start_map)
 int	copy_map(t_map *map)
 {
 	t_file	*start_map;
-	
+
 	start_map = skip_textures(map->map_file);
-	t_file	*tmp = start_map;
-	while (tmp)
-	{
-		printf("map : %s", tmp->line);
-		tmp = tmp->next;
-	}
 	if (!get_size(map, start_map))
 	{
 		ft_putstr_fd("cub3d: error: additionnal content after map\n", 2);
@@ -109,14 +103,5 @@ int	copy_map(t_map *map)
 	}
 	if (!fill_map(map, start_map))
 		return (0);
-
-	printf("JE PRINT LA \n");
-	for(int y = 0; y < map->height; y++)
-	{
-		for(int x = 0; x < map->width - 1; x++)
-			printf("%d", map->block[y][x]);
-		printf("\n");
-	}
-	printf ("spawX : %d, spawnY : %d\n", map->spawn_x, map->spawn_y);
 	return (1);
 }

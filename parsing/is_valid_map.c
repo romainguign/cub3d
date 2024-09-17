@@ -6,15 +6,15 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:59:06 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 14:26:27 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:38:46 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-static int check_line(t_block **block, int height, int width, int y)
+static int	check_line(t_block **block, int height, int width, int y)
 {
-	int x;
+	int			x;
 	static int	spawn;
 
 	x = 0;
@@ -30,7 +30,7 @@ static int check_line(t_block **block, int height, int width, int y)
 				return (0);
 			if (block[y - 1][x] == EMPTY || block[y][x - 1] == EMPTY
 				|| block[y + 1][x] == EMPTY || block[y][x + 1] == EMPTY)
-					return (0);
+				return (0);
 		}
 		x++;
 	}
@@ -39,9 +39,9 @@ static int check_line(t_block **block, int height, int width, int y)
 	return (1);
 }
 
-int is_valid_map(t_map *map)
+int	is_valid_map(t_map *map)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	while (y < map->height)

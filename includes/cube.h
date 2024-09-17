@@ -108,6 +108,7 @@ void	img_pix_put(t_image *img, int x, int y, int color);
 void	camera_moves(t_game *game, char *input);
 void	player_moves(t_game *game, t_map *map, char *input);
 void	draw_column(t_map *map, t_image *img,t_ray *ray, int x);
+void	draw_ceiling_floor(t_map *map, t_image *img);
 int		raycaster(t_game *game, t_map *map, t_mlx *mlx);
 int		key_press(int	keycode, t_cube *cube);
 int		key_realease(int	keycode, char *input);

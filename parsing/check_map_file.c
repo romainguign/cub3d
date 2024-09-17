@@ -6,16 +6,19 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 13:38:52 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:36:12 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-static int		is_texture(char *line)
+static int	is_texture(char *line)
 {
-	if (!ft_strncmp("NO", line, 2) || !ft_strncmp("SO", line, 2) || !ft_strncmp("WE", line, 2)
-		|| !ft_strncmp("EA", line, 2) || !ft_strncmp("F", line, 1)
+	if (!ft_strncmp("NO", line, 2)
+		|| !ft_strncmp("SO", line, 2)
+		|| !ft_strncmp("WE", line, 2)
+		|| !ft_strncmp("EA", line, 2)
+		|| !ft_strncmp("F", line, 1)
 		|| !ft_strncmp("C", line, 1))
 		return (1);
 	return (0);
@@ -25,7 +28,7 @@ t_file	*skip_textures(t_file *file)
 {
 	int		i;
 	t_file	*tmp;
-	
+
 	tmp = file;
 	while (tmp)
 	{
@@ -39,7 +42,7 @@ t_file	*skip_textures(t_file *file)
 	return (0);
 }
 
-int	check_map_file (int fd, t_map *map)
+int	check_map_file(int fd, t_map *map)
 {
 	file_to_char(fd, map);
 	close (fd);

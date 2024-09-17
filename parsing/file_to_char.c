@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 14:34:33 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 13:49:16 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:31:05 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	ft_fileadd_back(t_file **lst, t_file *new)
 
 void	file_to_char(int fd, t_map *map)
 {
-	char *line;
+	char	*line;
 
 	line = get_next_line(fd);
 	while (line)

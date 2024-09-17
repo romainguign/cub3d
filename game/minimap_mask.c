@@ -6,13 +6,13 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 15:29:16 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/09 16:08:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:29:34 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-static void do_circle(int x, int y, int r, t_mask *mask)
+static void	do_circle(int x, int y, int r, t_mask *mask)
 {
 	double	i;
 	double	angle;
@@ -29,6 +29,7 @@ static void do_circle(int x, int y, int r, t_mask *mask)
 		i += 0.1;
 	}
 }
+
 void	fill_center_circle(t_mask *mask, int y, int x)
 {
 	while (mask->minimap[y][x] == 0 && x < MINIMAP_RADIUS + 1)

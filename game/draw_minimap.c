@@ -6,13 +6,13 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 16:50:17 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/12 10:04:08 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:09:49 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-static void	draw_player(int	x, int y, t_image *img)
+static void	draw_player(int x, int y, t_image *img)
 {
 	int	sx;
 	int	sy;
@@ -23,7 +23,7 @@ static void	draw_player(int	x, int y, t_image *img)
 		sy = y - 2;
 		while (sy < y + 3)
 		{
-			img_pix_put(img , sx, sy, RED);
+			img_pix_put(img, sx, sy, RED);
 			sy++;
 		}
 		sx++;
@@ -32,27 +32,29 @@ static void	draw_player(int	x, int y, t_image *img)
 
 static void	draw_walls(t_map *map, t_mlx *mlx, t_game *game, int pos[2])
 {
-	double	mapX;
-	double	mapY;
+	double	map_x;
+	double	map_y;
 
-	mapX = game->pos_x + (pos[1] - MINIMAP_RADIUS) / MINIMAP_ZOOM;
-	mapY = game->pos_y + (pos[0] - MINIMAP_RADIUS) / MINIMAP_ZOOM - 2;
-	// printf("Y CRASH : %d\n", (int)mapY);
-	if ((int)mapX >= map->width|| (int)mapY >= map->height - 1)
-	{	
-		img_pix_put(mlx->img , pos[1] + MINIMAP_POSX, pos[0] + MINIMAP_POSY, MINIMAP_F_COLOR);
+	map_x = game->pos_x + (pos[1] - MINIMAP_RADIUS) / MINIMAP_ZOOM;
+	map_y = game->pos_y + (pos[0] - MINIMAP_RADIUS) / MINIMAP_ZOOM - 2;
+	if ((int) map_x >= map->width || (int) map_y >= map->height - 1)
+	{
+		img_pix_put(mlx->img, pos[1] + MINIMAP_POSX, pos[0]
+			+ MINIMAP_POSY, MINIMAP_F_COLOR);
 		return ;
 	}
-	else if ( map->block[(int)mapY][(int)mapX] == WALL)
-		img_pix_put(mlx->img , pos[1] + MINIMAP_POSX, pos[0] + MINIMAP_POSY, MINIMAP_W_COLOR);
+	else if (map->block[(int)map_y][(int)map_x] == WALL)
+		img_pix_put(mlx->img, pos[1] + MINIMAP_POSX, pos[0]
+			+ MINIMAP_POSY, MINIMAP_W_COLOR);
 	else
-		img_pix_put(mlx->img , pos[1] + MINIMAP_POSX, pos[0] + MINIMAP_POSY, MINIMAP_F_COLOR);
+		img_pix_put(mlx->img, pos[1] + MINIMAP_POSX, pos[0]
+			+ MINIMAP_POSY, MINIMAP_F_COLOR);
 }
 
 void	minimap(t_map *map, t_game *game, t_mlx *mlx)
 {
 	int	pos[2];
-	
+
 	pos[0] = 0;
 	while (pos[0] < MINIMAP_RADIUS * 2 + 2)
 	{
@@ -65,5 +67,6 @@ void	minimap(t_map *map, t_game *game, t_mlx *mlx)
 		}
 		pos[0]++;
 	}
-	draw_player(MINIMAP_RADIUS + MINIMAP_POSX, MINIMAP_RADIUS + MINIMAP_POSY, mlx->img);
+	draw_player(MINIMAP_RADIUS + MINIMAP_POSX, MINIMAP_RADIUS
+		+ MINIMAP_POSY, mlx->img);
 }

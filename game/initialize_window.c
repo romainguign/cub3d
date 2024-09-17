@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:41:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/12 13:00:51 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:13:05 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	destroy(t_cube *cube)
 	exit(EXIT_SUCCESS);
 	return (1);
 }
-
 
 int	update_window(t_cube *cube)
 {
@@ -52,29 +51,7 @@ int	key_hook(int kcode, t_cube *cube)
 	update_window(cube);
 	if (kcode == XK_Escape)
 		destroy(cube);
-	
 	return (0);
-}
-
-void	draw_ceiling_floor(t_map *map, t_image *img)
-{
-	int		x;
-	int		y;
-
-	x = 0;
-	while (x < WIN_WIDTH)
-	{
-		y = 0;
-		while (y < WIN_HEIGHT)
-		{
-			if (y < WIN_HEIGHT / 2)
-				img_pix_put(img, x, y, map->textures->C);
-			else
-				img_pix_put(img, x, y, map->textures->F);
-			y++;
-		}
-		x++;
-	}
 }
 
 void	game_loop(t_map *map, t_mlx *mlx, t_game *game, t_cube *cube)
@@ -88,13 +65,12 @@ void	game_loop(t_map *map, t_mlx *mlx, t_game *game, t_cube *cube)
 	mlx->img->img = mlx_new_image(mlx->mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!mlx->img->img)
 		return ;
-	mlx->img->pixels = mlx_get_data_addr(mlx->img->img, &mlx->img->bpp, &mlx->img->size_line, &mlx->img->endian);
+	mlx->img->pixels = mlx_get_data_addr(mlx->img->img, &mlx->img->bpp,
+			&mlx->img->size_line, &mlx->img->endian);
 	raycaster(game, map, mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
-	// mlx_key_hook(mlx->win, key_hook, cube);
 	mlx_hook(mlx->win, KeyPress, KeyPressMask, key_press, cube);
 	mlx_hook(mlx->win, KeyRelease, KeyReleaseMask, key_realease, game->input);
-	// mlx_hook(mlx->win, 17, 0L, &destroy, cube);
 	mlx_loop_hook(mlx->mlx, &update_window, cube);
 	mlx_loop(mlx->mlx);
 }

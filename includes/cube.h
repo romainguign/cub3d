@@ -24,6 +24,8 @@
 # include "parameters.h"
 
 # define PI 3.1415926535
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
 
 typedef struct	s_image
 {
@@ -58,6 +60,7 @@ typedef struct s_ray
 	int		draw_start;
 	int		draw_end;
 	int		hit;
+	int		tex_x;
 	double	camera_x;
 	double	dir_x;
 	double	dir_y;
@@ -67,6 +70,7 @@ typedef struct s_ray
 	double	deltadist_y;
 	double	raywall_dist;
 	double	wall_x;
+	char 	*texture;
 }	t_ray ;
 
 typedef struct game

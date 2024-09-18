@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsoloher <tsoloher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 10:53:52 by tsoloher          #+#    #+#             */
-/*   Updated: 2024/09/17 23:45:29 by tsoloher         ###   ########.fr       */
+/*   Updated: 2024/09/18 17:31:02 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-static void		get_texture(t_ray *ray, t_game *game, t_textures *textures)
+static void		get_texture(t_ray *ray, t_game *game, t_textures *textures, t_mlx *mlx)
 {
 	(void)game;
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)
-			ray->texture = textures->EA_texture;
+			ray->texture = mlx->EA_img;
 		else
-			ray->texture = textures->WE_texture;
+			ray->texture = mlx->WE_img;
 	}
 	else
 	{
 		if (ray->dir_y < 0)
-			ray->texture = textures->SO_texture;
+			ray->texture = mlx->SO_img;
 		else
-			ray->texture = textures->NO_texture;
+			ray->texture = mlx->NO_img;
 	}
 }
 
@@ -38,76 +38,76 @@ static void		get_texture_offset(t_ray *ray, t_game *game)
 	else
 		ray->wall_x = game->pos_x + ray->raywall_dist * ray->dir_x;
 	ray->wall_x -= floor(ray->wall_x);
-	ray->tex_x = (int)(ray->wall_x * (double)TEX_WIDTH);
+	ray->tex_x = (int)(ray->wall_x * (double)ray->texture->width);
 	if (ray->side == 0 && ray->dir_x > 0)
-		ray->tex_x = TEX_WIDTH - ray->tex_x - 1;
+		ray->tex_x = ray->texture->width - ray->tex_x - 1;
 	if (ray->side == 1 && ray->dir_y < 0)
-		ray->tex_x = TEX_WIDTH - ray->tex_x - 1;
+		ray->tex_x = ray->texture->width - ray->tex_x - 1;
 }
 
-static void		draw_texture(t_ray *ray, t_game *game, t_mlx *mlx, int x)
+static void draw_texture(t_ray *ray, t_game *game, t_mlx *mlx, int x)
 {
-	int		y;
-	int		color;
-	int		tex_y;
-	int		d;
+	int y;
+	int color;
+	int tex_y;
+	int d;
 
 	(void)game;
 	y = ray->draw_start;
-	while (y < ray->draw_end)
+	while (y <= ray->draw_end)
 	{
 		d = y * 256 - WIN_HEIGHT * 128 + ray->line_height * 128;
-		tex_y = ((d * TEX_HEIGHT) / ray->line_height) / 256;
-		color = *(int *)(mlx->img->pixels + (tex_y * mlx->img->size_line
-					+ ray->tex_x * (mlx->img->bpp / 8)));
-		if (ray->side == 1)
-			color = (color >> 1) & 8355711;
-		*(int *)(mlx->img->pixels + (y * mlx->img->size_line + x
-					* (mlx->img->bpp / 8))) = color;
+		tex_y = ((d * ray->texture->height) / ray->line_height) / 256;
+		if (tex_y < 0)
+			tex_y = 0;
+		if (tex_y >= ray->texture->height)
+			tex_y = ray->texture->height - 1;
+
+		color = *(int *)(ray->texture->pixels + (tex_y * ray->texture->size_line + ray->tex_x * (ray->texture->bpp / 8)));
+		*(int *)(mlx->img->pixels + (y * mlx->img->size_line + x * (mlx->img->bpp / 8))) = color;
 		y++;
 	}
 }
 
-void			draw_textures(t_ray *ray, t_game *game, t_mlx *mlx, t_textures *textures)
+void	draw_textures(t_ray *ray, t_game *game, t_mlx *mlx, t_textures *textures, int x)
 {
-	get_texture(ray, game, textures);
+	get_texture(ray, game, textures, mlx);
 	get_texture_offset(ray, game);
-	draw_texture(ray, game, mlx, ray->tex_x);
+	draw_texture(ray, game, mlx, x); 
 }
 
 
-void			free_textures(t_textures *textures, t_mlx *mlx)
+void	destroy_textures(t_textures *textures, t_mlx *mlx)
 {
-	mlx_destroy_image(mlx->mlx, textures->NO_texture);
-	mlx_destroy_image(mlx->mlx, textures->SO_texture);
-	mlx_destroy_image(mlx->mlx, textures->WE_texture);
-	mlx_destroy_image(mlx->mlx, textures->EA_texture);
+	mlx_destroy_image(mlx->mlx, mlx->NO_img);
+	mlx_destroy_image(mlx->mlx, mlx->SO_img);
+	mlx_destroy_image(mlx->mlx, mlx->WE_img);
+	mlx_destroy_image(mlx->mlx, mlx->EA_img);
 }
-
-void			init_textures(t_textures *textures)
-{
-	textures->NO_texture = NULL;
-	textures->SO_texture = NULL;
-	textures->WE_texture = NULL;
-	textures->EA_texture = NULL;
-}
-
-
 
 void			load_textures(t_textures *textures, t_mlx *mlx)
 {
-	int tex_width;
-	int tex_height;
-
+	mlx->NO_img = ft_calloc(1, sizeof(t_image));
+	mlx->SO_img = ft_calloc(1, sizeof(t_image));
+	mlx->WE_img = ft_calloc(1, sizeof(t_image));
+	mlx->EA_img = ft_calloc(1, sizeof(t_image));
 	
-	textures->NO_texture = mlx_xpm_file_to_image(mlx->mlx, "coyote.xpm", &tex_width, &tex_height);
-	textures->SO_texture = mlx_xpm_file_to_image(mlx->mlx, "coyote.xpm", &tex_width, &tex_height);
-	textures->WE_texture = mlx_xpm_file_to_image(mlx->mlx, "coyote.xpm", &tex_width, &tex_height);
-	textures->EA_texture = mlx_xpm_file_to_image(mlx->mlx, "coyote.xpm", &tex_width, &tex_height);
-
-	if (!textures->NO_texture || !textures->SO_texture || !textures->WE_texture || !textures->EA_texture)
+	mlx->NO_img->img = mlx_xpm_file_to_image(mlx->mlx, "textures/bipbip.xpm", &mlx->NO_img->width, &mlx->NO_img->height);
+	mlx->SO_img->img = mlx_xpm_file_to_image(mlx->mlx, "textures/coyote.xpm", &mlx->SO_img->width, &mlx->SO_img->height);
+	mlx->WE_img->img = mlx_xpm_file_to_image(mlx->mlx, "textures/Taz_.xpm", &mlx->EA_img->width, &mlx->EA_img->height);
+	mlx->EA_img->img = mlx_xpm_file_to_image(mlx->mlx, "textures/bipbip.xpm", &mlx->WE_img->width, &mlx->WE_img->height);
+	if (!mlx->NO_img->img || !mlx->SO_img->img| !mlx->WE_img->img || !mlx->EA_img->img)
 	{
 		ft_putstr_fd("Error\nTexture not found\n", 2);
 		exit(0);
 	}
+	
+	mlx->NO_img->pixels = mlx_get_data_addr(mlx->NO_img->img, &mlx->NO_img->bpp,
+			&mlx->NO_img->size_line, &mlx->NO_img->endian);
+	mlx->SO_img->pixels = mlx_get_data_addr(mlx->SO_img->img, &mlx->SO_img->bpp,
+			&mlx->SO_img->size_line, &mlx->SO_img->endian);
+	mlx->WE_img->pixels = mlx_get_data_addr(mlx->WE_img->img, &mlx->WE_img->bpp,
+			&mlx->WE_img->size_line, &mlx->WE_img->endian);
+	mlx->EA_img->pixels = mlx_get_data_addr(mlx->EA_img->img, &mlx->EA_img->bpp,
+			&mlx->EA_img->size_line, &mlx->EA_img->endian);
 }

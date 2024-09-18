@@ -34,6 +34,8 @@ typedef struct	s_image
 	int		bpp;
 	int		endian;
 	int		size_line;
+	int		width;
+	int		height;
 }	t_image ;
 
 
@@ -41,6 +43,10 @@ typedef struct	s_mlx
 {
 	void	*mlx;
 	void	*win;
+	t_image	*NO_img;
+	t_image	*SO_img;
+	t_image	*EA_img;
+	t_image	*WE_img;
 	t_image	*img;
 }	t_mlx ;
 
@@ -70,7 +76,7 @@ typedef struct s_ray
 	double	deltadist_y;
 	double	raywall_dist;
 	double	wall_x;
-	char 	*texture;
+	t_image *texture;
 }	t_ray ;
 
 typedef struct game
@@ -116,6 +122,11 @@ void	draw_ceiling_floor(t_map *map, t_image *img);
 int		raycaster(t_game *game, t_map *map, t_mlx *mlx);
 int		key_press(int	keycode, t_cube *cube);
 int		key_realease(int	keycode, char *input);
+
+//textures
+void			draw_textures(t_ray *ray, t_game *game, t_mlx *mlx, t_textures *textures, int x);
+void			load_textures(t_textures *textures, t_mlx *mlx);
+
 
 //minimap
 int		minimap_mask(t_mask *mask);

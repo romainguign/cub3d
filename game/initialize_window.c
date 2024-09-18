@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:41:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 17:13:05 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/18 14:39:06 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	game_loop(t_map *map, t_mlx *mlx, t_game *game, t_cube *cube)
 		return ;
 	mlx->img->pixels = mlx_get_data_addr(mlx->img->img, &mlx->img->bpp,
 			&mlx->img->size_line, &mlx->img->endian);
+	load_textures(map->textures, mlx);
 	raycaster(game, map, mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 	mlx_hook(mlx->win, KeyPress, KeyPressMask, key_press, cube);

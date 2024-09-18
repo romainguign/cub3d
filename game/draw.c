@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:28:19 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 17:13:12 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/18 16:03:23 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,9 @@ void	draw_column(t_map *map, t_image *img, t_ray *ray, int x)
 	y = 0;
 	while (y < WIN_HEIGHT)
 	{
-		if (y >= ray->draw_start && y <= ray->draw_end)
-		{
-			if (y == ray->draw_start || y == ray->draw_end)
-				img_pix_put(img, x, y, 00000000);
-			else
-				img_pix_put(img, x, y, 11112657);
-		}
-		else if (y < ray->draw_start)
+		if (y <= ray->draw_start)
 			img_pix_put(img, x, y, map->textures->C);
-		else
+		else if (y > ray->draw_end)
 			img_pix_put(img, x, y, map->textures->F);
 		y++;
 	}

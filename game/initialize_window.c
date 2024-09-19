@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:41:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/18 14:39:06 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 15:50:31 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	update_window(t_cube *cube)
 
 	modifyed = 0;
 	input = cube->game->input;
-	if (input[0] || input[1])
+	if (input[0] || input[1] || input[4] || input[5])
 	{
 		player_moves(cube->game, cube->map, input);
 		modifyed++;

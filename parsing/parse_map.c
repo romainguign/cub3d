@@ -6,11 +6,33 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:40:35 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 17:34:04 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 17:50:42 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+
+static int	check_access(char *filename)
+{
+	int	fd;
+
+	fd = open (filename, O_DIRECTORY);
+	if (fd != -1)
+	{
+		ft_putstr_fd("cub3d: the map", 2);
+		ft_putstr_fd(filename, 2);
+		ft_putstr_fd(": is a directory\n", 2);
+		close(fd);
+		return (-1);
+	}
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("cub3d: map");
+		return (-1);
+	}
+	return (fd);
+}
 
 static int	missing_data(t_map *map)
 {
@@ -64,12 +86,7 @@ static int	check_file(char	*filename)
 		ft_putstr_fd("cub3d: invalid extension map file: needed '.cub'\n", 2);
 		return (-1);
 	}
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		perror("cub3d");
-		return (-1);
-	}
+	fd = check_access(filename);
 	return (fd);
 }
 

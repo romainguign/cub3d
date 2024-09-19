@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 09:50:51 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 14:42:49 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 15:06:00 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static int	texture_loop(t_map *map)
 			break ;
 		if (result == -2)
 		{
-			// ft_putstr_fd("cub3d: invalid RGB value\n", 2);
+			ft_putstr_fd("cub3d: invalid RGB value\n", 2);
 			return (0);
 		}
 		tmp = tmp->next;
@@ -100,6 +100,8 @@ int	fill_textures(t_map *map)
 	if (!texture_loop(map))
 		return (0);
 	// check_texures extension + access
+	if (!check_textures(map->textures, map))
+		return (0);
 	printf("NO : %s", map->textures->NO_texture);
 	printf("SO : %s", map->textures->SO_texture);
 	printf("WE : %s", map->textures->WE_texture);

@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:30:40 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 17:16:08 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 15:49:44 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,11 @@
 int	key_realease(int keycode, char *input)
 {
 	if (keycode == XK_w)
-	{
 		input[0] = 0;
-	}
 	if (keycode == XK_s)
 		input[1] = 0;
 	if (keycode == XK_Left)
-	{
 		input[2] = 0;
-	}
 	if (keycode == XK_Right)
 		input[3] = 0;
 	if (keycode == XK_a)

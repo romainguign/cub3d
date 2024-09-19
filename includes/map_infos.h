@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:37:09 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/09 16:10:06 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 13:45:36 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_map
 /*----------------------------- Parsing functions -----------------------------*/
 t_map	*parse_map(char	*filename);
 int		fill_textures(t_map *map);
+int		convert_color(char *line, long long int *color);
 int		copy_map(t_map *map);
 int		check_map_file (int fd, t_map *map);
 int 	is_valid_map(t_map *map);

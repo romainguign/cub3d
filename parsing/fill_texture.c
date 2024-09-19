@@ -6,40 +6,11 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 09:50:51 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 17:48:44 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:42:49 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-static int	convert_color(char *line, long long int *color)
-{
-	long long int	rgb[3];
-	char			**rgb_ascii;
-	int				i;
-
-	if (*color != -1)
-	{
-		ft_putstr_fd("cub3d: double definition of the color\n", 2);
-		return (0);
-	}
-	i = 1;
-	while (line[i] && is_space(line[i]))
-		i++;
-	rgb_ascii = ft_split(&line[i], ',');
-	if (!rgb_ascii)
-	{
-		free_tab((void **)rgb_ascii);
-		ft_putstr_fd(MALLOC_ERROR, 2);
-		return (0);
-	}
-	rgb[0] = ft_atoll(rgb_ascii[0]);
-	rgb[1] = ft_atoll(rgb_ascii[1]);
-	rgb[2] = ft_atoll(rgb_ascii[2]);
-	free_tab((void **)rgb_ascii);
-	*color = (rgb[0] << 16) + (rgb[1] << 8) + rgb[2];
-	return (1);
-}
 
 static int	dup_texture(char *line, char **texture)
 {
@@ -105,6 +76,11 @@ static int	texture_loop(t_map *map)
 		}
 		if (result == -1)
 			break ;
+		if (result == -2)
+		{
+			// ft_putstr_fd("cub3d: invalid RGB value\n", 2);
+			return (0);
+		}
 		tmp = tmp->next;
 	}
 	return (1);

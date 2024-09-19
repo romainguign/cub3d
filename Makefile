@@ -6,7 +6,7 @@
 #    By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/20 15:03:42 by roguigna          #+#    #+#              #
-#    Updated: 2024/09/19 12:59:52 by roguigna         ###   ########.fr        #
+#    Updated: 2024/09/19 13:45:58 by roguigna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRC_FILES		= cub3d.c \
 				  parsing/file_to_char.c \
 				  parsing/copy_map.c \
 				  parsing/is_valid_map.c \
+				  parsing/parse_color.c \
 				  game/initialize_window.c \
 				  game/draw.c \
 				  game/moves.c \

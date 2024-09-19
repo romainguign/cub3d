@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:20:54 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 17:50:27 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 14:26:36 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 int	is_space(char c)
 {
 	if ((c == ' ') || (c <= 13 && c >= 9))
+		return (1);
+	return (0);
+}
+
+int	is_num(char c)
+{
+	if ((c <= '9' && c >= '0'))
 		return (1);
 	return (0);
 }

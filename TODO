@@ -1,10 +1,12 @@
 
 CHECK TEXTURES
 
+cgheck couleur : check nb de couleur, check espace,
+Chek ouertur .xpm
+add WSAD
 
+---------------------------------------------
 Add Bonus : 
 Fix minimap
 Wall colision
-
-PROTECTION RGB
-Chek ouertur .xpm
+check if text north est au nord

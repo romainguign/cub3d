@@ -108,6 +108,7 @@ typedef struct s_cube
 void	free_map(t_map *map);
 void	free_all(t_cube *cube);
 int		is_space(char c);
+int		is_num(char c);
 void	free_tab(void **tab);
 long long int	ft_atoll(const char *str);
 

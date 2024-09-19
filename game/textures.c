@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 10:53:52 by tsoloher          #+#    #+#             */
-/*   Updated: 2024/09/19 12:57:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 13:09:17 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ void			load_textures(t_textures *textures, t_mlx *mlx)
 	
 	mlx->NO_img->img = mlx_xpm_file_to_image(mlx->mlx, "textures/bipbip.xpm", &mlx->NO_img->width, &mlx->NO_img->height);
 	mlx->SO_img->img = mlx_xpm_file_to_image(mlx->mlx, "textures/Taz_.xpm", &mlx->SO_img->width, &mlx->SO_img->height);
-	mlx->WE_img->img = mlx_xpm_file_to_image(mlx->mlx, "textures/coyote.xpm", &mlx->EA_img->width, &mlx->EA_img->height);
-	mlx->EA_img->img = mlx_xpm_file_to_image(mlx->mlx, "textures/Speedy.xpm", &mlx->WE_img->width, &mlx->WE_img->height);
+	mlx->WE_img->img = mlx_xpm_file_to_image(mlx->mlx, "textures/coyote.xpm", &mlx->WE_img->width, &mlx->WE_img->height);
+	mlx->EA_img->img = mlx_xpm_file_to_image(mlx->mlx, "textures/Speedy.xpm", &mlx->EA_img->width, &mlx->EA_img->height);
 	if (!mlx->NO_img->img || !mlx->SO_img->img| !mlx->WE_img->img || !mlx->EA_img->img)
 	{
 		ft_putstr_fd("Error\nTexture not found\n", 2);

@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:16:38 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 16:55:06 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:31:03 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	camera_moves(t_game *game, char *input)
 	}
 }
 
-static void	calc_new_pos(t_game *game, double *new_x, double *new_y, char *input)
+static void	calc_new_pos(t_game *game, double *new_x,
+	double *new_y, char *input)
 {
 	double	move_speed;
 

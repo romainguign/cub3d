@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 10:03:36 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 17:49:54 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:16:35 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 static void	free_textures(t_textures *textures)
 {
-	if (textures->NO_texture)
-		free(textures->NO_texture);
-	if (textures->SO_texture)
-		free(textures->SO_texture);
-	if (textures->WE_texture)
-		free(textures->WE_texture);
-	if (textures->EA_texture)
-		free(textures->EA_texture);
+	if (textures->no_texture)
+		free(textures->no_texture);
+	if (textures->so_texture)
+		free(textures->so_texture);
+	if (textures->we_texture)
+		free(textures->we_texture);
+	if (textures->ea_texture)
+		free(textures->ea_texture);
 	free(textures);
 }
 

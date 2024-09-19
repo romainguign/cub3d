@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:37:09 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 15:08:14 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:25:37 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ typedef enum e_block
 	FLOOR,
 	WALL,
 	SPAWN
-}	t_block ;
+}	t_block;
 
 typedef struct s_textures
 {
-	char			*NO_texture;
-	char			*SO_texture;
-	char			*WE_texture;
-	char			*EA_texture;
-	long long int	F;
-	long long int	C;
-}	t_textures ;
+	char			*no_texture;
+	char			*so_texture;
+	char			*we_texture;
+	char			*ea_texture;
+	long long int	f;
+	long long int	c;
+}	t_textures;
 
 typedef struct s_file
 {
-	char 			*line;
+	char			*line;
 	struct s_file	*next;
 }	t_file;
 
@@ -51,14 +51,14 @@ typedef struct s_map
 	int			spawn_y;
 }	t_map;
 
-/*----------------------------- Parsing functions -----------------------------*/
+/*---------------------------- Parsing functions ----------------------------*/
 t_map	*parse_map(char	*filename);
 int		fill_textures(t_map *map);
 int		convert_color(char *line, long long int *color);
 int		copy_map(t_map *map);
-int		check_map_file (int fd, t_map *map);
-int check_textures(t_textures *textures, t_map *map);
-int 	is_valid_map(t_map *map);
+int		check_map_file(int fd, t_map *map);
+int		check_textures(t_textures *textures, t_map *map);
+int		is_valid_map(t_map *map);
 t_file	*skip_textures(t_file *file);
 void	file_to_char(int fd, t_map *map);
 void	ft_fileclear(t_file **lst, void (*del)(void*));

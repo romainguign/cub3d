@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUBE_H
+# define CUBE_H
 
 # include "libft.h"
 # include "map_infos.h"
@@ -27,7 +27,7 @@
 # define TEX_WIDTH 64
 # define TEX_HEIGHT 64
 
-typedef struct	s_image
+typedef struct s_image
 {
 	void	*img;
 	char	*pixels;
@@ -36,24 +36,23 @@ typedef struct	s_image
 	int		size_line;
 	int		width;
 	int		height;
-}	t_image ;
+}	t_image;
 
-
-typedef struct	s_mlx
+typedef struct s_mlx
 {
 	void	*mlx;
 	void	*win;
-	t_image	*NO_img;
-	t_image	*SO_img;
-	t_image	*EA_img;
-	t_image	*WE_img;
+	t_image	*no_img;
+	t_image	*so_img;
+	t_image	*ea_img;
+	t_image	*we_img;
 	t_image	*img;
-}	t_mlx ;
+}	t_mlx;
 
-typedef struct	mask
+typedef struct mask
 {
 	char	**minimap;
-}	t_mask ;
+}	t_mask;
 
 typedef struct s_ray
 {
@@ -76,8 +75,8 @@ typedef struct s_ray
 	double	deltadist_y;
 	double	raywall_dist;
 	double	wall_x;
-	t_image *texture;
-}	t_ray ;
+	t_image	*texture;
+}	t_ray;
 
 typedef struct game
 {
@@ -92,49 +91,48 @@ typedef struct game
 	char	input[6];
 	t_ray	ray;
 	t_mask	*mask;
-}	t_game ;
+}	t_game;
 
 typedef struct s_cube
 {
 	t_map	*map;
 	t_game	*game;
 	t_mlx	*mlx;
-}	t_cube ;
+}	t_cube;
 
 /*----------------------------- Errors messages -----------------------------*/
 # define MALLOC_ERROR		"cub3d: malloc: failed allocation memory\n"
 
 /*---------------------------------- Utils ----------------------------------*/
-void	free_map(t_map *map);
-void	free_all(t_cube *cube);
-int		is_space(char c);
-int		is_num(char c);
-void	free_tab(void **tab);
+void			free_map(t_map *map);
+void			free_all(t_cube *cube);
+int				is_space(char c);
+int				is_num(char c);
+void			free_tab(void **tab);
 long long int	ft_atoll(const char *str);
 
 /*---------------------------------- Game -----------------------------------*/
-int		start_game(t_cube *cube);
-int		destroy(t_cube *cube);
-void	img_pix_put(t_image *img, int x, int y, int color);
-void	camera_moves(t_game *game, char *input);
-void	player_moves(t_game *game, t_map *map, char *input);
-void	draw_column(t_map *map, t_image *img,t_ray *ray, int x);
-void	draw_ceiling_floor(t_map *map, t_image *img);
-int		raycaster(t_game *game, t_map *map, t_mlx *mlx);
-int		key_press(int	keycode, t_cube *cube);
-int		key_realease(int	keycode, char *input);
+int				start_game(t_cube *cube);
+int				destroy(t_cube *cube);
+void			img_pix_put(t_image *img, int x, int y, int color);
+void			camera_moves(t_game *game, char *input);
+void			player_moves(t_game *game, t_map *map, char *input);
+void			draw_column(t_map *map, t_image *img, t_ray *ray, int x);
+void			draw_ceiling_floor(t_map *map, t_image *img);
+int				raycaster(t_game *game, t_map *map, t_mlx *mlx);
+int				key_press(int keycode, t_cube *cube);
+int				key_realease(int keycode, char *input);
 
 //textures
-void			draw_textures(t_ray *ray, t_game *game, t_mlx *mlx, t_textures *textures, int x);
+void			draw_textures(t_ray *ray, t_game *game, t_mlx *mlx, int x);
 void			load_textures(t_textures *textures, t_mlx *mlx);
 
-
 //minimap
-int		minimap_mask(t_mask *mask);
-void    minimap(t_map *map, t_game *game, t_mlx *mlx);
+int				minimap_mask(t_mask *mask);
+void			minimap(t_map *map, t_game *game, t_mlx *mlx);
 
 //init_functions
-int		init_game(t_cube *cube);
-void	init_ray(t_ray *ray);
+int				init_game(t_cube *cube);
+void			init_ray(t_ray *ray);
 
 #endif

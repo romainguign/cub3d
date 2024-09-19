@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 09:50:51 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 15:06:00 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:28:02 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,17 @@ static int	copy_texture(char *line, t_textures *texture)
 	if (*tmp == '\0')
 		return (1);
 	else if (!ft_strncmp("NO", tmp, 2))
-		result = dup_texture(tmp, &texture->NO_texture);
+		result = dup_texture(tmp, &texture->no_texture);
 	else if (!ft_strncmp("SO", tmp, 2))
-		result = dup_texture(tmp, &texture->SO_texture);
+		result = dup_texture(tmp, &texture->so_texture);
 	else if (!ft_strncmp("WE", tmp, 2))
-		result = dup_texture(tmp, &texture->WE_texture);
+		result = dup_texture(tmp, &texture->we_texture);
 	else if (!ft_strncmp("EA", tmp, 2))
-		result = dup_texture(tmp, &texture->EA_texture);
+		result = dup_texture(tmp, &texture->ea_texture);
 	else if (!ft_strncmp("F", tmp, 1))
-		result = convert_color(tmp, &texture->F);
+		result = convert_color(tmp, &texture->f);
 	else if (!ft_strncmp("C", tmp, 1))
-		result = convert_color(tmp, &texture->C);
+		result = convert_color(tmp, &texture->c);
 	else
 		return (-1);
 	return (result);
@@ -95,18 +95,11 @@ int	fill_textures(t_map *map)
 		free_map(map);
 		return (0);
 	}
-	map->textures->C = -1;
-	map->textures->F = -1;
+	map->textures->c = -1;
+	map->textures->f = -1;
 	if (!texture_loop(map))
 		return (0);
-	// check_texures extension + access
 	if (!check_textures(map->textures, map))
 		return (0);
-	printf("NO : %s", map->textures->NO_texture);
-	printf("SO : %s", map->textures->SO_texture);
-	printf("WE : %s", map->textures->WE_texture);
-	printf("EA : %s", map->textures->EA_texture);
-	printf("F : %lld\n", map->textures->F);
-	printf("C : %lld\n", map->textures->C);
 	return (1);
 }

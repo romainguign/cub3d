@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:40:35 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 17:50:42 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:18:05 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static int	missing_data(t_map *map)
 	t_textures	*tmp;
 
 	tmp = map->textures;
-	if (!tmp->NO_texture || !tmp->SO_texture || !tmp->WE_texture
-		|| !tmp->EA_texture || tmp->C == -1 || tmp->F == -1
+	if (!tmp->no_texture || !tmp->so_texture || !tmp->we_texture
+		|| !tmp->ea_texture || tmp->c == -1 || tmp->f == -1
 		|| !map->block || !map->spawn_x)
 	{
 		free_map(map);

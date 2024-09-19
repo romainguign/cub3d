@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 15:04:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 17:58:09 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:29:34 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	check_access(char *texture)
 {
-	int fd;
-	
+	int	fd;
+
 	fd = open(texture, O_DIRECTORY);
 	if (fd != -1)
 	{
@@ -37,14 +37,15 @@ static int	check_access(char *texture)
 	return (1);
 }
 
-static int  check_xpm(char *texture)
+static int	check_xpm(char *texture)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(texture);
 	if (len < 4)
 		return (0);
-	if (texture[len - 1] != 'm' || texture[len - 2] != 'p' || texture[len - 3] != 'x' || texture[len - 4] != '.' )
+	if (texture[len - 1] != 'm' || texture[len - 2] != 'p'
+		|| texture[len - 3] != 'x' || texture[len - 4] != '.' )
 	{
 		ft_putstr_fd("cub3d: ", 2);
 		ft_putstr_fd(texture, 2);
@@ -54,21 +55,20 @@ static int  check_xpm(char *texture)
 	return (1);
 }
 
-int check_textures(t_textures *textures, t_map *map)
+int	check_textures(t_textures *textures, t_map *map)
 {
-	textures->NO_texture[ft_strlen(textures->NO_texture) - 1] = '\0';
-	textures->SO_texture[ft_strlen(textures->SO_texture) - 1] = '\0';
-	textures->EA_texture[ft_strlen(textures->EA_texture) - 1] = '\0';
-	textures->WE_texture[ft_strlen(textures->WE_texture) - 1] = '\0';
-
-	if (!check_xpm(textures->NO_texture)
-		|| !check_xpm(textures->SO_texture) 
-		|| !check_xpm(textures->EA_texture)
-		|| !check_xpm(textures->WE_texture)
-		|| !check_access(textures->NO_texture)
-		|| !check_access(textures->NO_texture)
-		|| !check_access(textures->NO_texture)
-		|| !check_access(textures->NO_texture))
+	textures->no_texture[ft_strlen(textures->no_texture) - 1] = '\0';
+	textures->so_texture[ft_strlen(textures->so_texture) - 1] = '\0';
+	textures->ea_texture[ft_strlen(textures->ea_texture) - 1] = '\0';
+	textures->we_texture[ft_strlen(textures->we_texture) - 1] = '\0';
+	if (!check_xpm(textures->no_texture)
+		|| !check_xpm(textures->so_texture)
+		|| !check_xpm(textures->ea_texture)
+		|| !check_xpm(textures->we_texture)
+		|| !check_access(textures->no_texture)
+		|| !check_access(textures->no_texture)
+		|| !check_access(textures->no_texture)
+		|| !check_access(textures->no_texture))
 	{
 		free_map(map);
 		return (0);

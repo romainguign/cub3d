@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 18:28:19 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/18 16:03:23 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:18:51 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	draw_ceiling_floor(t_map *map, t_image *img)
 		while (y < WIN_HEIGHT)
 		{
 			if (y < WIN_HEIGHT / 2)
-				img_pix_put(img, x, y, map->textures->C);
+				img_pix_put(img, x, y, map->textures->c);
 			else
-				img_pix_put(img, x, y, map->textures->F);
+				img_pix_put(img, x, y, map->textures->f);
 			y++;
 		}
 		x++;
@@ -49,9 +49,9 @@ void	draw_column(t_map *map, t_image *img, t_ray *ray, int x)
 	while (y < WIN_HEIGHT)
 	{
 		if (y <= ray->draw_start)
-			img_pix_put(img, x, y, map->textures->C);
+			img_pix_put(img, x, y, map->textures->c);
 		else if (y > ray->draw_end)
-			img_pix_put(img, x, y, map->textures->F);
+			img_pix_put(img, x, y, map->textures->f);
 		y++;
 	}
 }

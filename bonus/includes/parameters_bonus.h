@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 10:04:43 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 16:00:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 17:02:15 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@
 # define MINIMAP_POSY 20
 # define MINIMAP_F_COLOR CREAM 
 # define MINIMAP_W_COLOR GRAY_BLUE 
-# define MINIMAP_ZOOM 20
+# define MINIMAP_ZOOM 0.05
 
 #endif

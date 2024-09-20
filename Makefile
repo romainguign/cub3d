@@ -6,7 +6,7 @@
 #    By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/20 15:03:42 by roguigna          #+#    #+#              #
-#    Updated: 2024/09/20 15:50:58 by roguigna         ###   ########.fr        #
+#    Updated: 2024/09/20 17:01:55 by roguigna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,5 +135,7 @@ fclean: clean
 	@echo "${YELLOW}Cub3d executable files cleaned! ${DEF_COLOR}"
 
 re: fclean all
+
+re_bonus: fclean bonus
 
 .PHONY: all clean fclean re

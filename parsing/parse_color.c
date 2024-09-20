@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:41:11 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 14:51:14 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:25:23 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ static int	check_valid_rgb(char **rgb_ascii)
 			return (0);
 		i++;
 	}
+	if (i < 3)
+		return (0);
 	return (1);
 }
 

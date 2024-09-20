@@ -125,7 +125,8 @@ int				key_realease(int keycode, char *input);
 
 //textures
 void			draw_textures(t_ray *ray, t_game *game, t_mlx *mlx, int x);
-void			load_textures(t_textures *textures, t_mlx *mlx);
+void			destroy_textures(t_mlx *mlx);
+int				load_textures(t_textures *textures, t_mlx *mlx);
 
 //minimap
 int				minimap_mask(t_mask *mask);

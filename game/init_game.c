@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 11:21:43 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 17:01:02 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:12:46 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	init_game(t_cube *cube)
 	cube->game = ft_calloc(1, sizeof(t_game));
 	if (!cube->game)
 		return (0);
-	cube->game->pos_x = cube->map->spawn_x;
-	cube->game->pos_y = cube->map->spawn_y;
+	cube->game->pos_x = cube->map->spawn_x + 0.5;
+	cube->game->pos_y = cube->map->spawn_y + 0.5;
 	init_dir(cube);
 	cube->game->mask = ft_calloc(1, sizeof(t_mask));
 	if (!cube->game->mask)

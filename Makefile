@@ -6,7 +6,7 @@
 #    By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/20 15:03:42 by roguigna          #+#    #+#              #
-#    Updated: 2024/09/19 15:07:46 by roguigna         ###   ########.fr        #
+#    Updated: 2024/09/20 13:12:45 by roguigna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRC_FILES		= cub3d.c \
 				  game/events.c \
 				  game/init_game.c \
 				  game/textures.c \
+				  game/load_textures.c \
 
 
 OBJ             = $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))

@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 10:03:36 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 18:16:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:19:01 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,14 @@ void	free_mlx(t_mlx *mlx)
 		free(mlx->mlx);
 	if (mlx->img)
 		free(mlx->img);
+	if (mlx->ea_img)
+		free(mlx->ea_img);
+	if (mlx->we_img)
+		free(mlx->we_img);
+	if (mlx->no_img)
+		free(mlx->no_img);
+	if (mlx->so_img)
+		free(mlx->so_img);
 	free(mlx);
 	mlx = NULL;
 }

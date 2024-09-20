@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:41:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 15:50:31 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:49:11 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,15 @@
 
 int	destroy(t_cube *cube)
 {
-	mlx_clear_window(cube->mlx->mlx, cube->mlx->win);
-	mlx_destroy_image(cube->mlx->mlx, cube->mlx->img->img);
-	mlx_destroy_window(cube->mlx->mlx, cube->mlx->win);
-	mlx_destroy_display(cube->mlx->mlx);
+	if (cube->mlx->win)
+		mlx_clear_window(cube->mlx->mlx, cube->mlx->win);
+	if (cube->mlx->img->img)
+		mlx_destroy_image(cube->mlx->mlx, cube->mlx->img->img);
+	destroy_textures(cube->mlx);
+	if (cube->mlx->win)
+		mlx_destroy_window(cube->mlx->mlx, cube->mlx->win);
+	if (cube->mlx->mlx)
+		mlx_destroy_display(cube->mlx->mlx);
 	mlx_loop_end(cube->mlx->mlx);
 	free_all(cube);
 	exit(EXIT_SUCCESS);
@@ -67,11 +72,13 @@ void	game_loop(t_map *map, t_mlx *mlx, t_game *game, t_cube *cube)
 		return ;
 	mlx->img->pixels = mlx_get_data_addr(mlx->img->img, &mlx->img->bpp,
 			&mlx->img->size_line, &mlx->img->endian);
-	load_textures(map->textures, mlx);
+	if (!load_textures(map->textures, mlx))
+		destroy(cube);
 	raycaster(game, map, mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 	mlx_hook(mlx->win, KeyPress, KeyPressMask, key_press, cube);
 	mlx_hook(mlx->win, KeyRelease, KeyReleaseMask, key_realease, game->input);
+	mlx_hook(mlx->win, 17, 1L << 3, &destroy,  cube);
 	mlx_loop_hook(mlx->mlx, &update_window, cube);
 	mlx_loop(mlx->mlx);
 }

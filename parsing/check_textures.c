@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 15:04:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 18:29:34 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:21:37 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ static int	check_xpm(char *texture)
 
 int	check_textures(t_textures *textures, t_map *map)
 {
+	if (!ft_strlen(textures->no_texture) || !ft_strlen(textures->so_texture)
+		|| !ft_strlen(textures->we_texture) || !ft_strlen(textures->ea_texture))
+	{
+		ft_putstr_fd("cub3d: syntax error\n", 2);
+		free_map(map);
+		return (0);
+	}
 	textures->no_texture[ft_strlen(textures->no_texture) - 1] = '\0';
 	textures->so_texture[ft_strlen(textures->so_texture) - 1] = '\0';
 	textures->ea_texture[ft_strlen(textures->ea_texture) - 1] = '\0';
@@ -66,9 +73,9 @@ int	check_textures(t_textures *textures, t_map *map)
 		|| !check_xpm(textures->ea_texture)
 		|| !check_xpm(textures->we_texture)
 		|| !check_access(textures->no_texture)
-		|| !check_access(textures->no_texture)
-		|| !check_access(textures->no_texture)
-		|| !check_access(textures->no_texture))
+		|| !check_access(textures->so_texture)
+		|| !check_access(textures->ea_texture)
+		|| !check_access(textures->we_texture))
 	{
 		free_map(map);
 		return (0);

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   gnl_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsoloher <tsoloher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:25:58 by roguigna          #+#    #+#             */
-/*   Updated: 2023/11/30 18:27:01 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:39:34 by tsoloher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GNL_UTILS
-# define GNL_UTILS
+#ifndef GNL_UTILS_H
+# define GNL_UTILS_H
 
 # include "get_next_line.h"
 

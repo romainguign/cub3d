@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_window.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsoloher <tsoloher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 17:41:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 13:49:11 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:33:32 by tsoloher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	game_loop(t_map *map, t_mlx *mlx, t_game *game, t_cube *cube)
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img->img, 0, 0);
 	mlx_hook(mlx->win, KeyPress, KeyPressMask, key_press, cube);
 	mlx_hook(mlx->win, KeyRelease, KeyReleaseMask, key_realease, game->input);
-	mlx_hook(mlx->win, 17, 1L << 3, &destroy,  cube);
+	mlx_hook(mlx->win, 17, 1L << 3, &destroy, cube);
 	mlx_loop_hook(mlx->mlx, &update_window, cube);
 	mlx_loop(mlx->mlx);
 }

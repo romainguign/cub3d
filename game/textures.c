@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsoloher <tsoloher@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 10:53:52 by tsoloher          #+#    #+#             */
-/*   Updated: 2024/09/20 13:40:30 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:32:57 by tsoloher         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-static void		get_texture(t_ray *ray, t_mlx *mlx)
+static void	get_texture(t_ray *ray, t_mlx *mlx)
 {
 	if (ray->side == 0)
 	{
@@ -30,7 +30,7 @@ static void		get_texture(t_ray *ray, t_mlx *mlx)
 	}
 }
 
-static void		get_texture_offset(t_ray *ray, t_game *game)
+static void	get_texture_offset(t_ray *ray, t_game *game)
 {
 	if (ray->side == 0)
 		ray->wall_x = game->pos_y + ray->raywall_dist * ray->dir_y;
@@ -44,12 +44,12 @@ static void		get_texture_offset(t_ray *ray, t_game *game)
 		ray->tex_x = ray->texture->width - ray->tex_x - 1;
 }
 
-static void draw_texture(t_ray *ray, t_game *game, t_mlx *mlx, int x)
+static void	draw_texture(t_ray *ray, t_game *game, t_mlx *mlx, int x)
 {
-	int y;
-	int color;
-	int tex_y;
-	int d;
+	int	y;
+	int	color;
+	int	tex_y;
+	int	d;
 
 	(void)game;
 	y = ray->draw_start;
@@ -61,8 +61,11 @@ static void draw_texture(t_ray *ray, t_game *game, t_mlx *mlx, int x)
 			tex_y = 0;
 		if (tex_y >= ray->texture->height)
 			tex_y = ray->texture->height - 1;
-		color = *(int *)(ray->texture->pixels + (tex_y * ray->texture->size_line + ray->tex_x * (ray->texture->bpp / 8)));
-		*(int *)(mlx->img->pixels + (y * mlx->img->size_line + x * (mlx->img->bpp / 8))) = color;
+		color = *(int *)(ray->texture->pixels
+				+ (tex_y * ray->texture->size_line
+					+ ray->tex_x * (ray->texture->bpp / 8)));
+		*(int *)(mlx->img->pixels + (y * mlx->img->size_line
+					+ x * (mlx->img->bpp / 8))) = color;
 		y++;
 	}
 }
@@ -71,6 +74,5 @@ void	draw_textures(t_ray *ray, t_game *game, t_mlx *mlx, int x)
 {
 	get_texture(ray, mlx);
 	get_texture_offset(ray, game);
-	draw_texture(ray, game, mlx, x); 
+	draw_texture(ray, game, mlx, x);
 }
-

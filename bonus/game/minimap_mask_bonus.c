@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minimap_mask.c                                     :+:      :+:    :+:   */
+/*   minimap_mask_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 15:29:16 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 17:29:34 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:11:35 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "cube_bonus.h"
 
 static void	do_circle(int x, int y, int r, t_mask *mask)
 {

@@ -6,11 +6,11 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 10:03:36 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 13:19:01 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:11:35 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "cube_bonus.h"
 
 static void	free_textures(t_textures *textures)
 {

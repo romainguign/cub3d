@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cube.h                                            :+:      :+:    :+:   */
+/*   cube_bonus.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 15:03:38 by roguigna          #+#    #+#             */
-/*   Updated: 2024/07/12 12:09:28 by roguigna         ###   ########.fr       */
+/*   Created: 2024/09/20 16:01:02 by roguigna          #+#    #+#             */
+/*   Updated: 2024/09/20 16:01:07 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUBE_H
-# define CUBE_H
+#ifndef CUBE_BONUS_H
+# define CUBE_BONUS_H
 
 # include "libft.h"
-# include "map_infos.h"
+# include "map_infos_bonus.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
 # include "mlx.h"
 # include "mlx_int.h"
-# include "parameters.h"
+# include "parameters_bonus.h"
 
 # define PI 3.1415926535
 # define TEX_WIDTH 64

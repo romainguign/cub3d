@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   copy_map.c                                         :+:      :+:    :+:   */
+/*   copy_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:56:18 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 17:36:48 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:59:38 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "cube_bonus.h"
 
 static t_block	block_type(char c, t_map *map, int x, int y)
 {
@@ -93,7 +93,6 @@ int	copy_map(t_map *map)
 		free_map(map);
 		return (0);
 	}
-	printf ("width : %d, height : %d\n", map->width, map->height);
 	map->block = ft_calloc(map->height + 1, sizeof(t_block *));
 	if (!map->block)
 	{

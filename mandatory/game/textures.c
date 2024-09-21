@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsoloher <tsoloher@student.42.fr>          +#+  +:+       +#+        */
+/*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 10:53:52 by tsoloher          #+#    #+#             */
-/*   Updated: 2024/09/20 14:32:57 by tsoloher         ###   ########.fr       */
+/*   Updated: 2024/09/21 17:01:49 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ static void	get_texture_offset(t_ray *ray, t_game *game)
 		ray->wall_x = game->pos_x + ray->raywall_dist * ray->dir_x;
 	ray->wall_x -= floor(ray->wall_x);
 	ray->tex_x = (int)(ray->wall_x * (double)ray->texture->width);
-	if (ray->side == 0 && ray->dir_x > 0)
-		ray->tex_x = ray->texture->width - ray->tex_x - 1;
-	if (ray->side == 1 && ray->dir_y < 0)
-		ray->tex_x = ray->texture->width - ray->tex_x - 1;
+	if (ray->side == 0 && ray->dir_x < 0)
+		ray->tex_x = ray->texture->width - ray->tex_x - 2;
+	if (ray->side == 1 && ray->dir_y > 0)
+		ray->tex_x = ray->texture->width - ray->tex_x - 2;
 }
 
 static void	draw_texture(t_ray *ray, t_game *game, t_mlx *mlx, int x)

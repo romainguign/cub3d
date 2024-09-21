@@ -6,7 +6,7 @@
 #    By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/20 15:03:42 by roguigna          #+#    #+#              #
-#    Updated: 2024/09/20 17:01:55 by roguigna         ###   ########.fr        #
+#    Updated: 2024/09/21 14:03:25 by roguigna         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,11 @@ NAME_BONUS		= cub3D_bonus
 
 CC				= cc
 
-CFLAGS 			= -Wall -Wextra -g3 #-Werror 
+CFLAGS 			= -Wall -Wextra -Werror
 
 LIBFT			= libft/libft.a
+
+MLX				= mlx_linux/libmlx_Linux.a
 
 INCLUDE			= -I mandatory/includes -I libft/includes
 
@@ -97,7 +99,7 @@ OBJ_BONUS			= $(addprefix $(OBJ_DIR_BONUS)/, $(SRC_BONUS_FILES:.c=.o))
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT) $(MLX) $(MLX)
 	@$(CC) $(OBJ) $(LIBFT) $(CFLAGS) $(MLX_FLAGS) $(INCLUDE) -o $(NAME) 
 	@echo "${GREEN}Cub3d executable file is ready! ${DEF_COLOR}"
 	
@@ -110,9 +112,12 @@ $(OBJ_DIR):
 $(LIBFT):
 	@make --quiet -C libft 
 
+$(MLX):
+	@make --quiet -C mlx_linux
+
 bonus: $(NAME_BONUS)
 
-$(NAME_BONUS): $(OBJ_BONUS) $(LIBFT)
+$(NAME_BONUS): $(OBJ_BONUS) $(LIBFT) $(MLX)
 	@$(CC) $(OBJ_BONUS) $(LIBFT) $(CFLAGS) $(MLX_FLAGS) $(INCLUDE_BONUS) -o $(NAME_BONUS) 
 	@echo "${GREEN}Cub3d executable file is ready! ${DEF_COLOR}"
 
@@ -132,6 +137,7 @@ fclean: clean
 	@rm -f $(NAME)
 	@rm -f $(NAME_BONUS)
 	@make --quiet fclean -C libft
+	@make --quiet clean -C mlx_linux
 	@echo "${YELLOW}Cub3d executable files cleaned! ${DEF_COLOR}"
 
 re: fclean all

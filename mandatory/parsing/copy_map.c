@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:56:18 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/24 13:13:26 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:28:22 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,12 @@ static int	fill_block(char	*line, int y, t_map *map)
 static int	fill_map(t_map *map, t_file *start_map)
 {
 	int		y;
-	int		x;
 	t_file	*tmp;
 
 	y = 0;
 	tmp = start_map;
 	while (y < map->height)
 	{
-		x = 0;
 		map->block[y] = ft_calloc(map->width + 1, sizeof(t_block));
 		if (!map->block[y])
 		{

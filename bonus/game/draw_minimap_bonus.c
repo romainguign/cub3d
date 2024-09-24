@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/05 16:50:17 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/24 13:37:51 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:00:05 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,11 @@ static void	draw_player(int x, int y, t_image *img)
 static void	calc_rota(t_game *game, double cos_sin_theta[2],
 	double *map_x, double *map_y)
 {
-	double	rel_x;
-	double	rel_y;
 	double	rot_x;
 	double	rot_y;
 
-	rel_x = *map_x - game->pos_x;
-	rel_y = *map_y - game->pos_y;
-	rot_x = rel_x * cos_sin_theta[0] - rel_y * cos_sin_theta[1];
-	rot_y = rel_x * cos_sin_theta[1] + rel_y * cos_sin_theta[0];
+	rot_x = *map_x * cos_sin_theta[0] - *map_y * cos_sin_theta[1];
+	rot_y = *map_x * cos_sin_theta[1] + *map_y * cos_sin_theta[0];
 	*map_x = game->pos_x + rot_x;
 	*map_y = game->pos_y + rot_y;
 }
@@ -54,8 +50,8 @@ static void	draw_walls_rotated(t_map *map, t_mlx *mlx, t_game *game,
 	double	cos_sin_theta[2];
 	double	angle;
 
-	map_x = game->pos_x + (pos[1] - MINIMAP_RADIUS) * MINIMAP_ZOOM;
-	map_y = game->pos_y + (pos[0] - MINIMAP_RADIUS) * MINIMAP_ZOOM;
+	map_x = (pos[1] - MINIMAP_RADIUS) * MINIMAP_ZOOM;
+	map_y = (pos[0] - MINIMAP_RADIUS) * MINIMAP_ZOOM;
 	angle = atan2(game->dir_y, game->dir_x) + PI / 2;
 	cos_sin_theta[0] = cos(angle);
 	cos_sin_theta[1] = sin(angle);

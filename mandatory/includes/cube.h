@@ -95,7 +95,7 @@ typedef struct s_cube
 }	t_cube;
 
 /*----------------------------- Errors messages -----------------------------*/
-# define MALLOC_ERROR		"cub3d: malloc: failed allocation memory\n"
+# define MALLOC_ERROR		"Error\ncub3d: malloc: failed allocation memory\n"
 
 /*---------------------------------- Utils ----------------------------------*/
 void			free_map(t_map *map);

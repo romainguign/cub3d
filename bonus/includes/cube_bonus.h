@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 16:01:02 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 16:01:07 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:39:43 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct s_cube
 }	t_cube;
 
 /*----------------------------- Errors messages -----------------------------*/
-# define MALLOC_ERROR		"cub3d: malloc: failed allocation memory\n"
+# define MALLOC_ERROR		"Error\ncub3d: malloc: failed allocation memory\n"
 
 /*---------------------------------- Utils ----------------------------------*/
 void			free_map(t_map *map);

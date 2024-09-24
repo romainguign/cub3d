@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:59:06 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/17 17:38:46 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:38:33 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	is_valid_map(t_map *map)
 	{
 		if (!check_line(map->block, map->height, map->width, y))
 		{
-			ft_putstr_fd("cub3d : invalid map\n", 2);
+			ft_putstr_fd("Error\ncub3d : invalid map\n", 2);
 			return (0);
 		}
 		y++;

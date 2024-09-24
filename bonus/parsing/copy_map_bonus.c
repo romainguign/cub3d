@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:56:18 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 15:59:38 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:36:30 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	copy_map(t_map *map)
 	start_map = skip_textures(map->map_file);
 	if (!get_size(map, start_map))
 	{
-		ft_putstr_fd("cub3d: error: additionnal content after map\n", 2);
+		ft_putstr_fd("Error\ncub3d: error: additionnal content after map\n", 2);
 		free_map(map);
 		return (0);
 	}

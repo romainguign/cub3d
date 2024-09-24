@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:41:11 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 14:25:23 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:38:38 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	**split_rgb(char *line)
 	if (!check_valid_rgb(rgb_ascii))
 	{
 		free_tab((void **)rgb_ascii);
-		ft_putstr_fd("cub3d: invalid RGB value\n", 2);
+		ft_putstr_fd("Error\ncub3d: invalid RGB value\n", 2);
 		return (0);
 	}
 	return (rgb_ascii);
@@ -88,7 +88,7 @@ int	convert_color(char *line, long long int *color)
 
 	if (*color != -1)
 	{
-		ft_putstr_fd("cub3d: double definition of the color\n", 2);
+		ft_putstr_fd("Error\ncub3d: double definition of the color\n", 2);
 		return (0);
 	}
 	rgb_ascii = split_rgb(line);

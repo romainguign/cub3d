@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_texture.c                                     :+:      :+:    :+:   */
+/*   fill_texture_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 09:50:51 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 15:11:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:36:39 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	dup_texture(char *line, char **texture)
 	i = 2;
 	if (*texture)
 	{
-		ft_putstr_fd("cub3d: double definition of texture\n", 2);
+		ft_putstr_fd("Error\ncub3d: double definition of texture\n", 2);
 		return (0);
 	}
 	while (line[i] && is_space(line[i]))
@@ -78,7 +78,7 @@ static int	texture_loop(t_map *map)
 			break ;
 		if (result == -2)
 		{
-			ft_putstr_fd("cub3d: invalid RGB value\n", 2);
+			ft_putstr_fd("Error\ncub3d: invalid RGB value\n", 2);
 			return (0);
 		}
 		tmp = tmp->next;

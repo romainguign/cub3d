@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_textures.c                                   :+:      :+:    :+:   */
+/*   check_textures_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 15:04:05 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 15:11:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:36:25 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	check_access(char *texture)
 	if (fd != -1)
 	{
 		close (fd);
-		ft_putstr_fd("cub3d: ", 2);
+		ft_putstr_fd("Error\ncub3d: ", 2);
 		ft_putstr_fd(texture, 2);
 		ft_putstr_fd(": is a directory\n", 2);
 		return (0);
@@ -28,7 +28,7 @@ static int	check_access(char *texture)
 	fd = open(texture, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_putstr_fd("cub3d: ", 2);
+		ft_putstr_fd("Error\ncub3d: ", 2);
 		ft_putstr_fd(texture, 2);
 		perror(" ");
 		return (0);
@@ -47,7 +47,7 @@ static int	check_xpm(char *texture)
 	if (texture[len - 1] != 'm' || texture[len - 2] != 'p'
 		|| texture[len - 3] != 'x' || texture[len - 4] != '.' )
 	{
-		ft_putstr_fd("cub3d: ", 2);
+		ft_putstr_fd("Error\ncub3d: ", 2);
 		ft_putstr_fd(texture, 2);
 		ft_putstr_fd(": bad extension need '.xpm'\n", 2);
 		return (0);
@@ -60,7 +60,7 @@ int	check_textures(t_textures *textures, t_map *map)
 	if (!ft_strlen(textures->no_texture) || !ft_strlen(textures->so_texture)
 		|| !ft_strlen(textures->we_texture) || !ft_strlen(textures->ea_texture))
 	{
-		ft_putstr_fd("cub3d: syntax error\n", 2);
+		ft_putstr_fd("Error\ncub3d: syntax error\n", 2);
 		free_map(map);
 		return (0);
 	}

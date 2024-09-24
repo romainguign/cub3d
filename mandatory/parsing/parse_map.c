@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:40:35 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 18:18:05 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:38:57 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	check_access(char *filename)
 	fd = open (filename, O_DIRECTORY);
 	if (fd != -1)
 	{
-		ft_putstr_fd("cub3d: the map", 2);
+		ft_putstr_fd("Error\ncub3d: the map", 2);
 		ft_putstr_fd(filename, 2);
 		ft_putstr_fd(": is a directory\n", 2);
 		close(fd);
@@ -44,7 +44,7 @@ static int	missing_data(t_map *map)
 		|| !map->block || !map->spawn_x)
 	{
 		free_map(map);
-		ft_putstr_fd("cub3d: missing data in map file\n", 2);
+		ft_putstr_fd("Error\ncub3d: missing data in map file\n", 2);
 		return (0);
 	}
 	return (1);
@@ -83,7 +83,7 @@ static int	check_file(char	*filename)
 	if (*(tmp - 1) != 'b' || *(tmp - 2) != 'u' || *(tmp - 3) != 'c'
 		|| *(tmp - 4) != '.')
 	{
-		ft_putstr_fd("cub3d: invalid extension map file: needed '.cub'\n", 2);
+		ft_putstr_fd("Error\ncub3d: invalid extension map file: needed '.cub'\n", 2);
 		return (-1);
 	}
 	fd = check_access(filename);

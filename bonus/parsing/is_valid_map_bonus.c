@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid_map.c                                     :+:      :+:    :+:   */
+/*   is_valid_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 12:59:06 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 15:11:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:36:45 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	is_valid_map(t_map *map)
 	{
 		if (!check_line(map->block, map->height, map->width, y))
 		{
-			ft_putstr_fd("cub3d : invalid map\n", 2);
+			ft_putstr_fd("Error\ncub3d : invalid map\n", 2);
 			return (0);
 		}
 		y++;

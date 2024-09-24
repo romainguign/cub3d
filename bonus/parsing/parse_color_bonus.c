@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_color.c                                      :+:      :+:    :+:   */
+/*   parse_color_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 13:41:11 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 15:11:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:36:53 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static char	**split_rgb(char *line)
 	if (!check_valid_rgb(rgb_ascii))
 	{
 		free_tab((void **)rgb_ascii);
-		ft_putstr_fd("cub3d: invalid RGB value\n", 2);
+		ft_putstr_fd("Error\ncub3d: invalid RGB value\n", 2);
 		return (0);
 	}
 	return (rgb_ascii);
@@ -88,7 +88,7 @@ int	convert_color(char *line, long long int *color)
 
 	if (*color != -1)
 	{
-		ft_putstr_fd("cub3d: double definition of the color\n", 2);
+		ft_putstr_fd("Error\ncub3d: double definition of the color\n", 2);
 		return (0);
 	}
 	rgb_ascii = split_rgb(line);

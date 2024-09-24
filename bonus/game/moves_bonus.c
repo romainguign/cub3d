@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/04 18:16:38 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 16:01:26 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/23 11:01:43 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,6 @@ void	player_moves(t_game *game, t_map *map, char *input)
 		new_x = game->pos_x;
 	if (map->block[(int) new_y][(int) game->pos_x] == WALL)
 		new_y = game->pos_y;
-	game->pos_x = new_x;
-	game->pos_y = new_y;
 	game->pos_x = new_x;
 	game->pos_y = new_y;
 }

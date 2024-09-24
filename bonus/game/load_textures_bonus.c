@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/20 13:10:12 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/20 15:11:35 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 10:36:05 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	load_textures(t_textures *textures, t_mlx *mlx)
 	if (!mlx->no_img->img || !mlx->so_img->img || !mlx->we_img->img
 		|| !mlx->ea_img->img || !get_textures_data(mlx))
 	{
-		ft_putstr_fd("cub3d: texture loading error\n", 2);
+		ft_putstr_fd("Error\ncub3d: texture loading error\n", 2);
 		return (0);
 	}
 	return (1);

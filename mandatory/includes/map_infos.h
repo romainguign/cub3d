@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 15:37:09 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/19 18:25:37 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 13:02:15 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ typedef enum e_block
 	EMPTY,
 	FLOOR,
 	WALL,
-	SPAWN
+	SPAWN,
+	BAD
 }	t_block;
 
 typedef struct s_textures

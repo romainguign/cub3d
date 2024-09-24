@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 09:56:18 by roguigna          #+#    #+#             */
-/*   Updated: 2024/09/24 10:38:21 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 13:13:26 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,31 @@ static t_block	block_type(char c, t_map *map, int x, int y)
 		return (FLOOR);
 	if (c == '1')
 		return (WALL);
+	if (c != 'N' && c != 'W' && c != 'E' && c != 'S')
+		return (BAD);
 	map->spawn_direction = c;
 	map->spawn_x = x;
 	map->spawn_y = y;
 	return (SPAWN);
+}
+
+static int	fill_block(char	*line, int y, t_map *map)
+{
+	int	x;
+
+	x = 0;
+	while (line[x])
+	{
+		map->block[y][x] = block_type(line[x], map, x, y);
+		if (map->block[y][x] == BAD)
+		{
+			ft_putstr_fd("Error\ncub3d: bad character in map\n", 2);
+			free_map(map);
+			return (0);
+		}
+		x++;
+	}
+	return (1);
 }
 
 static int	fill_map(t_map *map, t_file *start_map)
@@ -44,11 +65,8 @@ static int	fill_map(t_map *map, t_file *start_map)
 			free_map(map);
 			return (0);
 		}
-		while (tmp->line[x])
-		{
-			map->block[y][x] = block_type(tmp->line[x], map, x, y);
-			x++;
-		}
+		if (!fill_block(tmp->line, y, map))
+			return (0);
 		y++;
 		tmp = tmp->next;
 	}

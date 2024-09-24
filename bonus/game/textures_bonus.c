@@ -6,7 +6,7 @@
 /*   By: roguigna <roguigna@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 10:53:52 by tsoloher          #+#    #+#             */
-/*   Updated: 2024/09/23 16:50:16 by roguigna         ###   ########.fr       */
+/*   Updated: 2024/09/24 11:23:04 by roguigna         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static void	draw_texture(t_ray *ray, t_game *game, t_mlx *mlx, int x)
 	{
 		d = y * 256 - WIN_HEIGHT * 128 + ray->line_height * 128;
 		tex_y = ((d * ray->texture->height) / ray->line_height) / 256;
-		if (tex_y < 0)
-			tex_y = 0;
+		if (tex_y <= 0)
+			tex_y = 1;
 		if (tex_y >= ray->texture->height)
 			tex_y = ray->texture->height - 1;
 		color = *(int *)(ray->texture->pixels
